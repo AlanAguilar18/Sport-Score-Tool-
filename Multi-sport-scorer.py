@@ -31,15 +31,15 @@ def basketball(player_1,player_2):
                 canasta1 = int(input("¿What kind of action was it? "))
                 match canasta1:
                     case 1:
-                        player_1 = player_1 + 2
+                        player_1 += 2
                         print(player_1,"/",player_2)
                     case 2:
-                        player_1 = player_1 + 3
+                        player_1 += 3
                         print(player_1,"/",player_2)
                     case 3:
                         foul = input("First shoot (yes/no): ")
                         if foul == "yes":
-                            player_1 = player_1 + 1
+                            player_1 += 1
                             print(player_1,"/",player_2)
                         elif foul == "no":
                             print("Next time")
@@ -47,7 +47,7 @@ def basketball(player_1,player_2):
                             print("Invalid")
                         foul2 = input("Second shoot(yes/no): ")
                         if foul2 == "yes":
-                            player_1 = player_1 + 1
+                            player_1 += 1
                             print(player_1,"/",player_2)
                         elif foul2 == "no":
                             print("Really???")
@@ -60,10 +60,10 @@ def basketball(player_1,player_2):
                 canasta2 = int(input("¿What kind of action was it? "))
                 match canasta2:
                     case 1:
-                        player_2 = player_2 + 2
+                        player_2 += 2
                         print(player_1,"/",player_2)
                     case 2:
-                        player_2 = player_2 + 3
+                        player_2 += 3
                         print(player_1,"/",player_2)
                     case 3:
                         foul1 = int(input("First shoot: "))
