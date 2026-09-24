@@ -7,7 +7,7 @@ Because of this, there is no single scoreboard that works for every sport. Someo
 
 This project aims to solve the problem that there is no single set of rules that works for every sport at scoring, so my program solves this by having you pick a sport first, then loading a function that contains only the scoring rules that belong to that sport, so the same program can correctly keep track of a match no matter which of the seven sports (tennis, american football, soccer, basketball, volleyball, ping pong and golf) you are playing, without you having to remember every of the sport rules yourself.
 
-Algorithm:
+## Algorithm
 1. You pick a sport, tennis, american football, soccer, basketball, volleyball, ping pong or golf
 2. It gives you to register you or your team in the data base for future matches
 3. The program loads the scoring rules that belong to that sport
