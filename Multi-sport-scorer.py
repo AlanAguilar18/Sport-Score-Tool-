@@ -1,26 +1,34 @@
-"""It helps the user see the options it has to choose between"""
+"""
+SPORT SCORER TOOL
+Multi Sport Scorer
+Author: Alan 
+"""
+"""
+Context
+"""
 def menu():
+    #It helps the user see the options it has to choose between
     print("Choose an option: ")
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
 
-"""The function shows a menu that helps the user choose an option of the three"""
 def options():
+    #The function shows a menu that helps the user choose an option of the three
     print("Choose an option: ")
     print("1 → Player 1")
     print("2 → Player 2")
     print("3 → End")
 
-"""It helps choosing the type of action it was on the game"""
 def options_basketball():
+    #It helps choosing the type of action it was on the game
     print("Choose an option: ")
     print("1. From the paint → 2 points")
     print("2. From the three point line → 3 points")
     print("3. Foul → 1 or 2 points")
 
-"""It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses"""
 def basketball(player_1,player_2):
+    #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
     match = 0
     while match == 0:
         options()
@@ -87,8 +95,8 @@ def basketball(player_1,player_2):
                 print("Invalid, try again")
     return(win(player_1,player_2))
 
-"""It calculates the score of every goal between 2 teams and can determine who wins or loses"""
 def soccer(team_a,team_b):
+    #It calculates the score of every goal between 2 teams and can determine who wins or loses
     match = 0
     while match == 0:
         options()
@@ -105,8 +113,8 @@ def soccer(team_a,team_b):
         print(team_a,"/",team_b)
     return(win(team_a,team_b))
 
-"""It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses"""
 def tennis(player1,player2):
+    #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
     match = 0
     points = 0
     points1 = 0
@@ -155,8 +163,8 @@ def tennis(player1,player2):
                 print("Invalid, try again")
     return(win(player1,player2))
 
-"""This function helps me simplifying in all the sports on the program to determine who is the winner"""
 def win(a,b):
+    #This function helps me simplifying in all the sports on the program to determine who is the winner
     if a > b:
         return("Player 1 won and Player 2 lost")
     elif b > a:
@@ -166,8 +174,8 @@ def win(a,b):
     else:
         return("DNP")
 
-"""The function helps organise all of the other functions into one"""
 def main():
+    #The function helps organise all of the other functions into one
     menu()
     option = int(input("Choose: "))
     match option:
