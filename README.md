@@ -1,4 +1,4 @@
-# Sport-Score-Tool-
+# Sport-Score-Tool
 
 Context:
 Every sport keeps a form to score in different ways, in soccer is a very simple way as the team who wins is the one with more goals. Tennis uses a structure of points, games, and sets, with special rules like deuce and advantage. Volleyball uses rally scoring with a win by two rule and a different point target for the deciding set. American football awards different point values depending on how a team scores like touchdown, extra point, field goal, safety. Golf does not count who has more points, it counts strokes, and fewer is better.
