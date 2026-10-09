@@ -4,7 +4,10 @@ Multi Sport Scorer
 Author: Alan 
 """
 """
-Context
+Context:
+Every sport has a different form to score, so this program solves that by letting the user pick one sport of the options 
+from the menu and loading a function with only that sport’s scoring rules, so it tracks the match correctly without 
+the user having to remember them all.
 """
 def menu():
     #It helps the user see the options it has to choose between
