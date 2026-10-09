@@ -106,9 +106,9 @@ def soccer(team_a,team_b):
         goal = int(input("Which team scored: "))
         match goal:
             case 1:
-                team_a += team_a+1
+                team_a += 1
             case 2:
-                team_b = team_b+1
+                team_b += 1
             case 3:
                 match = 1
             case _:
@@ -131,15 +131,15 @@ def tennis(player1,player2):
         point = int(input("Which won the point: "))
         match point:
             case 1:
-                points = points+15
+                points += 15
                 print(points,"/",points1)
                 if points == 60:
-                    games = games + 1
+                    games += 1
                     points = 0
                     points1 = 0
                     print(games,"/",games1)
                     if games == 6:
-                        sets1 = sets1 + 1
+                        sets1 += 1
                         games = 0
                         print(sets1,"/",sets2)
                         if sets1 == sets:
