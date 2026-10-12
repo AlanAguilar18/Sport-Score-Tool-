@@ -100,21 +100,21 @@ def basketball(player_1,player_2):
 
 def soccer(team_a,team_b):
     #It calculates the score of every goal between 2 teams and can determine who wins or loses
-    match = 0
-    while match == 0:
+    while True:
+        goals = [0,0]
         options()
-        goal = int(input("Which team scored: "))
-        match goal:
+        who = int(input("Which team scored: "))
+        match who:
             case 1:
-                team_a += 1
+                goals[who-1] +=1
             case 2:
-                team_b += 1
+                goals[who-1] +=1
             case 3:
-                match = 1
+                break
             case _:
                 print("Invalid")
-        print(team_a,"/",team_b)
-    return(win(team_a,team_b))
+        print(goals[0],"/",goals[1])
+    return(win(goals[0],goals[1]))
 
 def tennis(player1,player2):
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
@@ -191,9 +191,7 @@ def main():
             player2 = 0
             print(tennis(player1,player2))
         case 3:
-            team_a = 0
-            team_b = 0
-            print(soccer(team_a,team_b))
+            print(soccer())
         case _:
             print("Invalid, try again")
 main()
