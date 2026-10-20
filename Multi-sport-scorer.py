@@ -46,7 +46,7 @@ def basketball():
                     case 2:
                         game[point-1] += 3
                     case 3:
-                        foul = input("First shoot (yes/no): ")
+                        foul = input("First shoot(1 → yes or 2 → no): ")
                         match foul:
                             case 1:
                                 game[point-1] += 1
@@ -112,8 +112,8 @@ def soccer(team_a,team_b):
                 break
             case _:
                 print("Invalid")
-        print(goals[0],"/",goals[1])
-    return(win(goals[0],goals[1]))
+        print_progress(goals)
+    return(win(goals))
 
 def tennis(player1,player2):
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
