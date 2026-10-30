@@ -97,10 +97,10 @@ def basketball():
         print_progress(game)
     return(win(game))
 
-def soccer(team_a,team_b):
+def soccer():
     #It calculates the score of every goal between 2 teams and can determine who wins or loses
+    goals = [0,0]
     while True:
-        goals = [0,0]
         options()
         who = int(input("Which team scored: "))
         match who:
@@ -115,7 +115,7 @@ def soccer(team_a,team_b):
         print_progress(goals)
     return(win(goals))
 
-def tennis(player1,player2):
+def tennis():
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
     points = [0,0]
     games = [0,0]
@@ -127,18 +127,43 @@ def tennis(player1,player2):
         match point:
             case 1:
                 points[point-1] += 15
+                if points[0] == 45:
+                    points[0] -= 5
+                elif points[0] == 55:
+                    points[0] += 5
                 print_progress(points)
                 if points[0] == 60:
                     games[point-1] += 1
-                    points =[0,0]
+                    points = [0,0]
                     print_progress(games)
                     if games[0] == 6:
                         sets[point-1] += 1
                         games = [0,0]
                         print_progress(sets)
                         if sets[0] == sets:
-                            player = 1
-                            match = 1
+                            break
+            case 2:
+                points[point-1] += 15
+                print_progress(points)
+                if points[1] == 45:
+                    points[1] -= 5
+                elif points[1] == 55:
+                    points[1] += 5
+                if points[1] == 60:
+                    games[point-1] += 1
+                    points = [0,0]
+                    print_progress(games)
+                    if games[1] == 6:
+                        sets[point-1] += 1
+                        games = [0,0]
+                        print_progress(sets)
+                        if sets[1] == sets:
+                            break
+            case 3:
+                break
+            case 4:
+                print("Invalid, try again")
+    return(win(points))
             case 2:
                 points1 = points1+15
                 print(points,"/",points1)
@@ -160,8 +185,8 @@ def tennis(player1,player2):
                 print("Invalid, try again")
     return(win(player1,player2))
 
-def print_progress(c):
-    print(c[0],"/",c[1])
+def print_progress(b):
+    print(b[0],"/",b[1])
 
 def win(a):
     #This function helps me simplifying in all the sports on the program to determine who is the winner
@@ -176,17 +201,13 @@ def win(a):
 
 def main():
     #The function helps organise all of the other functions into one
-    menu()
+   menu()
     option = int(input("Choose: "))
     match option:
         case 1:
-            player_1 = 0
-            player_2 = 0
-            print(basketball(player_1,player_2))
+            print(basketball())
         case 2:
-            player1 = 0
-            player2 = 0
-            print(tennis(player1,player2))
+            print(tennis())
         case 3:
             print(soccer())
         case _:
