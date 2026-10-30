@@ -15,7 +15,6 @@ def menu():
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
-    print("4. Football")
 
 def options():
     #The function shows a menu that helps the user choose an option of the three
