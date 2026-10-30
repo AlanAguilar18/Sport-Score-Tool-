@@ -15,6 +15,7 @@ def menu():
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
+    print("4. Football")
 
 def options():
     #The function shows a menu that helps the user choose an option of the three
@@ -164,26 +165,6 @@ def tennis():
             case 4:
                 print("Invalid, try again")
     return(win(points))
-            case 2:
-                points1 = points1+15
-                print(points,"/",points1)
-                if points1 == 60:
-                    games1 = games1 + 1
-                    print(games,"/",games1)
-                    points1 = 0
-                    points = 0
-                    if games == 6:
-                        sets2 = sets2 + 1
-                        games = 0
-                        print(sets1,"/",sets2)
-                        if sets2 == sets:
-                            player2 = 1
-                            match = 1
-            case 3:
-                break
-            case 4:
-                print("Invalid, try again")
-    return(win(player1,player2))
 
 def print_progress(b):
     print(b[0],"/",b[1])
@@ -198,10 +179,10 @@ def win(a):
         return("TIE")
     else:
         return("DNP")
-
+        
 def main():
     #The function helps organise all of the other functions into one
-   menu()
+    menu()
     option = int(input("Choose: "))
     match option:
         case 1:
