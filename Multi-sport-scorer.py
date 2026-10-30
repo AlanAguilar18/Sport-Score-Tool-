@@ -32,8 +32,8 @@ def options_basketball():
 
 def basketball():
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
+    game = [0,0]
     while True:
-        game = [0,0]
         options()
         point = int(input("¿Who won the point? "))
         match point:
@@ -42,14 +42,14 @@ def basketball():
                 canasta1 = int(input("¿What kind of action was it? "))
                 match canasta1:
                     case 1:
-                        game[point-1] += 2
+                        game[0] += 2
                     case 2:
-                        game[point-1] += 3
+                        game[0] += 3
                     case 3:
                         foul = input("First shoot(1 → yes or 2 → no): ")
                         match foul:
                             case 1:
-                                game[point-1] += 1
+                                game[0] += 1
                             case 2:
                                 print("Next time")
                             case _:
@@ -57,7 +57,7 @@ def basketball():
                         foul2 = input("Second shoot(1 → yes or 2 → no): ")
                         match foul2:
                             case 1:
-                                game[point-1] += 1
+                                game[0] += 1
                             case 2:
                                 print("Really???")
                             case _:
@@ -70,31 +70,31 @@ def basketball():
                 canasta2 = int(input("¿What kind of action was it? "))
                 match canasta2:
                     case 1:
-                        game[point-1] += 2
+                        game[1] += 2
                     case 2:
-                        game[point-1] += 3
+                        game[1] += 3
                     case 3:
                         foul1 = int(input("First shoot(1 → yes or 2 → no): "))
                         match foul1:
                             case 1:
-                                game[point-1] += 1
+                                game[1] += 1
                             case 2:
                                 print("Good luck next time")
                         foul3 = int(input("Second shoot(1 → yes or 2 → no): "))
                         match foul3:
                             case 1:
-                                game[point-1] += 1
+                                game[1] += 1
                             case 2:
                                 print("Really???")
                             case _:
                                 print("Invalid")
                     case _:
                         print("Invalid, try again")
+                print_progress(game)
             case 3:
                 break
             case _:
                 print("Invalid, try again")
-        print_progress(game)
     return(win(game))
 
 def soccer():
