@@ -97,47 +97,33 @@ def soccer():
 
 def tennis():
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
-    points = [0,0]
-    games = [0,0]
+    points = [[0,0,0],
+              [0,0,0]
+              ]
     sets = int(input("Choose between a game of 3 or 5 sets: "))
-    sets = [0,0]
+    i = 0
     while True:
         options()
         point = int(input("Who won the point: "))
         match point:
-            case 1:
-                points[point-1] += 15
-                if points[0] == 45:
-                    points[0] -= 5
-                elif points[0] == 55:
-                    points[0] += 5
+            case 1 | 2:
+                points[point-1][i] += 15
+                if points[point-1][i] == 45:
+                    points[point-1][i] -= 5
+                elif points[point-1][i] == 55:
+                    points[point-1][i] += 5
                 print_progress(points)
-                if points[0] == 60:
-                    games[point-1] += 1
-                    points = [0,0]
-                    print_progress(games)
-                    if games[0] == 6:
-                        sets[point-1] += 1
-                        games = [0,0]
-                        print_progress(sets)
-                        if sets[0] == sets:
-                            break
-            case 2:
-                points[point-1] += 15
-                print_progress(points)
-                if points[1] == 45:
-                    points[1] -= 5
-                elif points[1] == 55:
-                    points[1] += 5
-                if points[1] == 60:
-                    games[point-1] += 1
-                    points = [0,0]
-                    print_progress(games)
-                    if games[1] == 6:
-                        sets[point-1] += 1
-                        games = [0,0]
-                        print_progress(sets)
-                        if sets[1] == sets:
+                if points[point-1][i] == 60:
+                    points[point-1][i+1] += 1
+                    points[0][i] = 0
+                    points[1][i] = 0
+                    print_progress(points)
+                    if points[point-1][i+1] == 6:
+                        points[point-1][i+2] += 1
+                        points[0][i+1] = 0
+                        points[1][i+1] = 0
+                        print_progress(points)
+                        if points[0][2] == sets or points[1][2] == sets:
                             break
             case 3:
                 break
