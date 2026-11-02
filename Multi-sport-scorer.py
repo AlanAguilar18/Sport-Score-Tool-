@@ -15,6 +15,7 @@ def menu():
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
+    print("4.End")
 
 def options():
     #The function shows a menu that helps the user choose an option of the three
@@ -32,69 +33,50 @@ def options_basketball():
 
 def basketball():
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
-    game = [0,0]
-    while True:
-        options()
-        point = int(input("¿Who won the point? "))
-        match point:
-            case 1:
-                options_basketball()
-                canasta1 = int(input("¿What kind of action was it? "))
-                match canasta1:
-                    case 1:
-                        game[0] += 2
-                    case 2:
-                        game[0] += 3
-                    case 3:
-                        foul = input("First shoot(1 → yes or 2 → no): ")
-                        match foul:
-                            case 1:
-                                game[0] += 1
-                            case 2:
-                                print("Next time")
-                            case _:
-                                print("Invalid")
-                        foul2 = input("Second shoot(1 → yes or 2 → no): ")
-                        match foul2:
-                            case 1:
-                                game[0] += 1
-                            case 2:
-                                print("Really???")
-                            case _:
-                                print("Invalid")
-                    case _:
-                        print("Invalid")
-                print_progress(game)
-            case 2:
-                options_basketball()
-                canasta2 = int(input("¿What kind of action was it? "))
-                match canasta2:
-                    case 1:
-                        game[1] += 2
-                    case 2:
-                        game[1] += 3
-                    case 3:
-                        foul1 = int(input("First shoot(1 → yes or 2 → no): "))
-                        match foul1:
-                            case 1:
-                                game[1] += 1
-                            case 2:
-                                print("Good luck next time")
-                        foul3 = int(input("Second shoot(1 → yes or 2 → no): "))
-                        match foul3:
-                            case 1:
-                                game[1] += 1
-                            case 2:
-                                print("Really???")
-                            case _:
-                                print("Invalid")
-                    case _:
-                        print("Invalid, try again")
-                print_progress(game)
-            case 3:
-                break
-            case _:
-                print("Invalid, try again")
+    game = [
+        [0,0,0,0],
+        [0,0,0,0]
+        ]
+    for i in range(4):
+        while True:
+            options()
+            print("4 → Next quarter")
+            print_basket(game)
+            point = int(input("¿Who won the point? "))
+            match point:
+                case 1 | 2:
+                    options_basketball()
+                    canasta1 = int(input("¿What kind of action was it? "))
+                    match canasta1:
+                        case 1:
+                            game[point-1][i] += 2
+                        case 2:
+                            game[point-1][i] += 3
+                        case 3:
+                            foul = input("First shoot(1 → yes or 2 → no): ")
+                            match foul:
+                                case 1:
+                                    game[point-1][i] += 1
+                                case 2:
+                                    print("Next time")
+                                case _:
+                                    print("Invalid")
+                            foul2 = input("Second shoot(1 → yes or 2 → no): ")
+                            match foul2:
+                                case 1:
+                                    game[point-1][i] += 1
+                                case 2:
+                                    print("Really???")
+                                case _:
+                                    print("Invalid")
+                        case _:
+                            print("Invalid")
+                case 3:
+                    break
+                case 4:
+                    continue
+                case _:
+                    print("Invalid, try again")
     return(win(game))
 
 def soccer():
@@ -104,9 +86,7 @@ def soccer():
         options()
         who = int(input("Which team scored: "))
         match who:
-            case 1:
-                goals[who-1] +=1
-            case 2:
+            case 1 | 2:
                 goals[who-1] +=1
             case 3:
                 break
@@ -165,7 +145,14 @@ def tennis():
                 print("Invalid, try again")
     return(win(points))
 
+def print_basket(c):
+    #This function helps me show how the game is going as it is on the Tv
+    print(" Q1|Q2|Q3|Q4")
+    print(c[0])
+    print(c[1])
+    
 def print_progress(b):
+    #A form to show the result iin an easier way
     print(b[0],"/",b[1])
 
 def win(a):
@@ -181,15 +168,18 @@ def win(a):
         
 def main():
     #The function helps organise all of the other functions into one
-    menu()
-    option = int(input("Choose: "))
-    match option:
-        case 1:
-            print(basketball())
-        case 2:
-            print(tennis())
-        case 3:
-            print(soccer())
-        case _:
-            print("Invalid, try again")
+    while True:
+        menu()
+        option = int(input("Choose: "))
+        match option:
+            case 1:
+                print(basketball())
+            case 2:
+                print(tennis())
+            case 3:
+                print(soccer())
+            case 4:
+                break
+            case _:
+                print("Invalid, try again")
 main()
