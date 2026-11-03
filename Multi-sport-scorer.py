@@ -166,6 +166,8 @@ def win(a):
         
 def main():
     #The function helps organise all of the other functions into one
+    name = names()
+    print(name[0],"vs",name[1])
     while True:
         menu()
         option = int(input("Choose: "))
