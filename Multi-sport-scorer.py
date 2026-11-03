@@ -17,11 +17,11 @@ def menu():
     print("3. Soccer")
     print("4.End")
 
-def options():
+def options(name):
     #The function shows a menu that helps the user choose an option of the three
     print("Choose an option: ")
-    print("1 → Player 1")
-    print("2 → Player 2")
+    print("1 → ",name[0])
+    print("2 → ",name[1])
     print("3 → End")
 
 def options_basketball():
@@ -31,12 +31,18 @@ def options_basketball():
     print("2. From the three point line → 3 points")
     print("3. Foul → 1 or 2 points")
 
-def basketball():
+def basketball(name):
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
-    while True:
-            options()
+    game = [
+        [0,0,0,0],
+        [0,0,0,0]
+        ]
+    for i in range(len(game[0])):
+        while True:
+            options(name)
             print("4 → Next quarter")
-            print_basket(game)
+            print(" Q1|Q2|Q3|Q4")
+            print_progress(game,name)
             point = int(input("¿Who won the point? "))
             match point:
                 case 1 | 2:
@@ -67,38 +73,43 @@ def basketball():
                         case _:
                             print("Invalid")
                 case 3:
-                    print_basket(game)
+                    print(" Q1|Q2|Q3|Q4")
+                    print_progress(game,name)
                     total = []
-                    for basquet in game:
+                    for a in game:
                         suma = 0
-                        for puntos in basquet:
-                            suma += puntos
+                        for b in a:
+                            suma += a
                             total.append(suma)
-                    return win(total)
                 case 4:
-                    i += 1
-                    if i == 5:
-                        break
-                    continue
+                    break
                 case _:
                     print("Invalid, try again")
-def soccer():
+
+def soccer(name):
     #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
-    goals = [0,0]
-    while True:
-        options()
-        who = int(input("Which team scored: "))
-        match who:
-            case 1 | 2:
-                goals[who-1] +=1
-            case 3:
-                break
-            case _:
-                print("Invalid")
-        print_progress(goals)
+    goals = [
+        [0,0],
+        [0,0]
+        ]
+    for i in range(2):
+        while True:
+            options(name)
+            print("4 → Half time")
+            who = int(input("Which team scored: "))
+            match who:
+                case 1 | 2:
+                    goals[who-1][i] +=1
+                case 3:
+                    return(win(goals))
+                case 4:
+                    break
+                case _:
+                    print("Invalid")
+            print_progress(goals,name)
     return(win(goals))
 
-def tennis():
+def tennis(name):
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
     points = [[0,0,0],
               [0,0,0]
@@ -106,7 +117,7 @@ def tennis():
     sets = int(input("Choose between a game of 3 or 5 sets: "))
     i = 0
     while True:
-        options()
+        options(name)
         point = int(input("Who won the point: "))
         match point:
             case 1 | 2:
@@ -134,15 +145,10 @@ def tennis():
                 print("Invalid, try again")
     return(win(points))
 
-def print_basket(c):
+def print_progress(a,name):
     #This function helps me show how the game is going as it is on the Tv
-    print(" Q1|Q2|Q3|Q4")
-    print(c[0])
-    print(c[1])
-    
-def print_progress(b):
-    #A form to show the result iin an easier way
-    print(b[0],"/",b[1])
+    print(a[0],": ",name[0])
+    print(a[1],": ",name[1])
 
 def names():
 #It helps introduce identity to the user in the game
@@ -173,11 +179,11 @@ def main():
         option = int(input("Choose: "))
         match option:
             case 1:
-                print(basketball())
+                print(basketball(name))
             case 2:
-                print(tennis())
+                print(tennis(name))
             case 3:
-                print(soccer())
+                print(soccer(name))
             case 4:
                 break
             case _:
