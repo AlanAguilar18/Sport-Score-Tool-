@@ -53,7 +53,7 @@ def basketball():
                         case 2:
                             game[point-1][i] += 3
                         case 3:
-                            foul = input("First shoot(1 → yes or 2 → no): ")
+                            foul = int(input("First shoot(1 → yes or 2 → no): "))
                             match foul:
                                 case 1:
                                     game[point-1][i] += 1
@@ -61,7 +61,7 @@ def basketball():
                                     print("Next time")
                                 case _:
                                     print("Invalid")
-                            foul2 = input("Second shoot(1 → yes or 2 → no): ")
+                            foul2 = int(input("Second shoot(1 → yes or 2 → no): "))
                             match foul2:
                                 case 1:
                                     game[point-1][i] += 1
