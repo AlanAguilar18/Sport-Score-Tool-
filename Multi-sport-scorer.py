@@ -127,17 +127,17 @@ def tennis(name):
                     points[point-1][i] -= 5
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
-                print_progress(points)
+                print_progress(points,name)
                 if points[point-1][i] == 60:
                     points[point-1][i+1] += 1
                     points[0][i] = 0
                     points[1][i] = 0
-                    print_progress(points)
+                    print_progress(points,name)
                     if points[point-1][i+1] == 6:
                         points[point-1][i+2] += 1
                         points[0][i+1] = 0
                         points[1][i+1] = 0
-                        print_progress(points)
+                        print_progress(points,name)
                         if points[0][2] == sets or points[1][2] == sets:
                             break
             case 3:
