@@ -76,11 +76,12 @@ def basketball(name):
                     print(" Q1|Q2|Q3|Q4")
                     print_progress(game,name)
                     total = []
-                    for a in game:
+                    for basquet in game:
                         suma = 0
-                        for b in a:
-                            suma += a
-                            total.append(suma)
+                        for puntos in basquet:
+                            suma += puntos
+                        total.append(suma)
+                    return win(total)
                 case 4:
                     break
                 case _:
