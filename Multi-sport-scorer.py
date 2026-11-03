@@ -33,12 +33,7 @@ def options_basketball():
 
 def basketball():
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
-    game = [
-        [0,0,0,0],
-        [0,0,0,0]
-        ]
-    for i in range(4):
-        while True:
+    while True:
             options()
             print("4 → Next quarter")
             print_basket(game)
@@ -72,15 +67,23 @@ def basketball():
                         case _:
                             print("Invalid")
                 case 3:
-                    break
+                    print_basket(game)
+                    total = []
+                    for basquet in game:
+                        suma = 0
+                        for puntos in basquet:
+                            suma += puntos
+                            total.append(suma)
+                    return win(total)
                 case 4:
+                    i += 1
+                    if i == 5:
+                        break
                     continue
                 case _:
                     print("Invalid, try again")
-    return(win(game))
-
 def soccer():
-    #It calculates the score of every goal between 2 teams and can determine who wins or loses
+    #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
     goals = [0,0]
     while True:
         options()
@@ -140,6 +143,15 @@ def print_basket(c):
 def print_progress(b):
     #A form to show the result iin an easier way
     print(b[0],"/",b[1])
+
+def names():
+#It helps introduce identity to the user in the game
+    name = []
+    for i in range(2):
+        names = input("Name of player: ")
+        names = names.title()
+        name.append(names)
+    return(name)
 
 def win(a):
     #This function helps me simplifying in all the sports on the program to determine who is the winner
