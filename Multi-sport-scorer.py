@@ -20,8 +20,8 @@ def menu():
 def options(name):
     #The function shows a menu that helps the user choose an option of the three
     print("Choose an option: ")
-    print("1 → ",name[0])
-    print("2 → ",name[1])
+    print(f"1 → {name[0]}")
+    print(f"2 → {name[1]}")
     print("3 → End")
 
 def options_basketball():
@@ -31,18 +31,29 @@ def options_basketball():
     print("2. From the three point line → 3 points")
     print("3. Foul → 1 or 2 points")
 
+def suma(a):
+    Suma = []
+    for i in a:
+        total = 0
+        for j in i:
+            total += j
+        Suma.append(total)
+    return(Suma)
+
 def basketball(name):
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
     game = [
         [0,0,0,0],
         [0,0,0,0]
         ]
-    for i in range(len(game[0])):
+    abc = abbreviations(name)
+    i = 0
+    while i < 4:
         while True:
             options(name)
             print("4 → Next quarter")
             print(" Q1|Q2|Q3|Q4")
-            print_progress(game,name)
+            print_progress(game,abc)
             point = int(input("¿Who won the point? "))
             match point:
                 case 1 | 2:
@@ -74,26 +85,27 @@ def basketball(name):
                             print("Invalid")
                 case 3:
                     print(" Q1|Q2|Q3|Q4")
-                    print_progress(game,name)
-                    total = []
-                    for basquet in game:
-                        suma = 0
-                        for puntos in basquet:
-                            suma += puntos
-                        total.append(suma)
-                    return win(total)
+                    print_progress(game,abc)
+                    print_progress(suma(game),abc)
+                    return win(suma(game),name)
                 case 4:
-                    break
+                    i += 1
+                    if i == 4:
+                        print(" Q1|Q2|Q3|Q4")
+                        print_progress(game,abc)
+                        print_progress(suma(game),abc)
+                        return win(suma(game),name)
                 case _:
                     print("Invalid, try again")
-
 def soccer(name):
     #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
     goals = [
         [0,0],
         [0,0]
         ]
-    for i in range(2):
+    abc = abbreviations(name)
+    i = 0
+    while i < 2:
         while True:
             options(name)
             print("4 → Half time")
@@ -102,13 +114,16 @@ def soccer(name):
                 case 1 | 2:
                     goals[who-1][i] +=1
                 case 3:
-                    return(win(goals))
+                    print_progress(suma(goals),abc)
+                    return(win(suma(goals),name))
                 case 4:
-                    break
+                    i += 1
+                    if i == 2:
+                        print_progress(suma(goals),abc)
+                        return(win(suma(goals),name))
                 case _:
                     print("Invalid")
-            print_progress(goals,name)
-    return(win(goals))
+            print_progress(goals,abc)
 
 def tennis(name):
     #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
@@ -116,6 +131,7 @@ def tennis(name):
               [0,0,0]
               ]
     sets = int(input("Choose between a game of 3 or 5 sets: "))
+    abc = abbreviations(name)
     i = 0
     while True:
         options(name)
@@ -127,36 +143,37 @@ def tennis(name):
                     points[point-1][i] -= 5
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
-                print_progress(points,name)
+                print_progress(points,abc)
                 if points[point-1][i] == 60:
                     points[point-1][i+1] += 1
                     points[0][i] = 0
                     points[1][i] = 0
-                    print_progress(points,name)
+                    print_progress(points,abc)
                     if points[point-1][i+1] == 6:
                         points[point-1][i+2] += 1
                         points[0][i+1] = 0
                         points[1][i+1] = 0
-                        print_progress(points,name)
+                        print_progress(points,abc)
                         if points[0][2] == sets or points[1][2] == sets:
+                            win(suma(points),abc)
                             break
             case 3:
+                win(suma(points),name)
                 break
             case 4:
                 print("Invalid, try again")
-    return(win(points))
 
-def print_progress(a,name):
+def print_progress(a,abc):
     #This function helps me show how the game is going as it is on the Tv
-    print(a[0],": ",name[0])
-    print(a[1],": ",name[1])
+    print(f"{a[0]}: {abc[0]}")
+    print(f"{a[1]}: {abc[1]}")
 
 def names():
 #It helps introduce identity to the user in the game
     name = []
     for i in range(2):
         names = input("Name of player: ")
-        names = names.title()
+        names = names.strip().title()
         name.append(names)
     return(name)
 
@@ -170,11 +187,23 @@ def win(a):
         return("TIE")
     else:
         return("DNP")
-        
+
+def abbreviations(name):
+    a = []
+    for i in name:
+        parts = i.split()
+        if len(parts) > 1:
+            short = parts[0][0] + parts[1][0:2]
+        else:
+            short = i[:3]
+        a.append(short.upper())
+    return a
+
 def main():
     #The function helps organise all of the other functions into one
     name = names()
-    print(name[0],"vs",name[1])
+    abc = abbreviations(name)
+    print(abc[0], "vs" ,abc[1])
     while True:
         menu()
         option = int(input("Choose: "))
