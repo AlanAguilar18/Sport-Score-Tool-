@@ -55,7 +55,7 @@ def options_basketball():
     print("2. From the three point line → 3 points")
     print("3. Foul → 1 or 2 points")
 
-def suma(a):
+def sum(a):
     #This function helps me as I now use matrices to calculate the total in the game
     Suma = []
     for i in a:
@@ -111,17 +111,44 @@ def basketball(name):
                 case 3:
                     print(" Q1|Q2|Q3|Q4")
                     print_progress(game,abc)
-                    print_progress(suma(game),abc)
-                    return win(suma(game),name)
+                    print_progress(sum(game),abc)
+                    return win(sum(game),name)
                 case 4:
                     i += 1
                     if i == 4:
                         print(" Q1|Q2|Q3|Q4")
                         print_progress(game,abc)
-                        print_progress(suma(game),abc)
-                        return win(suma(game),name)
+                        print_progress(sum(game),abc)
+                        return win(sum(game),name)
                 case _:
                     print("Invalid, try again")
+
+def soccer(name):
+    goals = [
+        [0,0],
+        [0,0]
+        ]
+    abc = abbreviations(name)
+    i = 0
+    while i < 2:
+        while True:
+            options(name)
+            print("4 → Half time")
+            who = int(input("Which team scored: "))
+            match who:
+                case 1 | 2:
+                    goals[who-1][i] +=1
+                case 3:
+                    print_progress(sum(goals),abc)
+                    return(win(sum(goals),name))
+                case 4:
+                    i += 1
+                    if i == 2:
+                        print_progress(sum(goals),abc)
+                        return(win(sum(goals),name))
+                case _:
+                    print("Invalid")
+            print_progress(goals,abc)
 
 def soccer(name):
     #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
@@ -140,13 +167,13 @@ def soccer(name):
                 case 1 | 2:
                     goals[who-1][i] +=1
                 case 3:
-                    print_progress(suma(goals),abc)
-                    return(win(suma(goals),name))
+                    print_progress(sum(goals),abc)
+                    return(win(sum(goals),name))
                 case 4:
                     i += 1
                     if i == 2:
-                        print_progress(suma(goals),abc)
-                        return(win(suma(goals),name))
+                        print_progress(sum(goals),abc)
+                        return(win(sum(goals),name))
                 case _:
                     print("Invalid")
             print_progress(goals,abc)
@@ -207,10 +234,10 @@ def tennis(name):
                         points[0][i+1] = 0
                         points[1][i+1] = 0
                         if points[0][2] == sets or points[1][2] == sets:
-                            print(win(suma(points),name))
+                            print(win(sum(points),name))
                             break
             case 3:
-                print(win(suma(points),name))
+                print(win(sum(points),name))
                 break
             case 4:
                 print("Invalid, try again")
