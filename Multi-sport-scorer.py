@@ -108,6 +108,7 @@ def basketball(name):
                         return win(suma(game),name)
                 case _:
                     print("Invalid, try again")
+
 def soccer(name):
     #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
     goals = [
@@ -218,11 +219,11 @@ def names():
 def win(a):
     #This function helps me simplifying in all the sports on the program to determine who is the winner
     if a[0] > a[1]:
-        return("Player 1 won and Player 2 lost")
+        return(pyfiglet.figlet_format(f"{name[0]} won\n{name[1]} lost"))
     elif a[1] > a[0]:
-        return("Player 2 won and Player 1 lost")
+        return(pyfiglet.figlet_format(f"{name[1]} won\n{name[0]} lost"))
     elif a[0] == a[1]:
-        return("TIE")
+        return(pyfiglet.figlet_format("TIE"))
     else:
         return("DNP")
 
@@ -242,17 +243,17 @@ def tenis_expressions(a,sets):
     #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
     for i in range(len(a)):
         if a[0][0] == 0 and a[1][0] == 0:
-            print("Love\n")
+            print(Fore.GREEN + "Love\n")
             break
         elif a[0][0] == 40 and a[1][0] == 40:
-            print("Deuce\n")
+            print(Fore.YELLOW + "Deuce\n")
             break
         elif a[i][0] == 41:
             return("Advantage")
         elif a[i][1] == 5:
-            print("Game point\n")
+            print(Fore.RED + "Game point\n")
         elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 2:
-            print("Match point\n")
+            print(Fore.RED + "Match point\n")
 
 def main():
     #The function helps organise all of the other functions into one
