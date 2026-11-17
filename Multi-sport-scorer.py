@@ -131,16 +131,32 @@ def tennis(name):
               [0,0,0]
               ]
     sets = int(input("Choose between a game of 3 or 5 sets: "))
+    if sets == 3:
+        sets = 2
+    elif sets == 5:
+        sets = 3
     abc = abbreviations(name)
     i = 0
-    while True:
+    while points[0][2] < sets and points[1][2] < sets:
         options(name)
         point = int(input("Who won the point: "))
         match point:
             case 1 | 2:
+                print(tenis_expressions(points[point-1][i],points[point-1][i],name,sets))
                 points[point-1][i] += 15
                 if points[point-1][i] == 45:
                     points[point-1][i] -= 5
+                    if points[0][i] == 40 and points[1][i] == 40:
+                        print_progress(points,abc)
+                        p = int(input("Who won the point: "))
+                        while points[0][i] and points[1][i] != 42:
+                            if p == 1:
+                                points[0][i] += 1
+                            elif p == 2:
+                                points[1][i] += 1
+                            if points[0][i] == 42:
+                                points[0][i+1] += 1
+                    tenis_expressions(points[point-1][i],points[point-1][i],name,sets)
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
                 print_progress(points,abc)
@@ -155,10 +171,10 @@ def tennis(name):
                         points[1][i+1] = 0
                         print_progress(points,abc)
                         if points[0][2] == sets or points[1][2] == sets:
-                            win(suma(points),abc)
+                            print(win(suma(points),abc))
                             break
             case 3:
-                win(suma(points),name)
+                print(win(suma(points),abc))
                 break
             case 4:
                 print("Invalid, try again")
