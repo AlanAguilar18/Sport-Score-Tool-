@@ -130,7 +130,12 @@ def tennis(name):
     points = [[0,0,0],
               [0,0,0]
               ]
-    sets = int(input("Choose between a game of 3 or 5 sets: "))
+    while True:
+        sets = int(input("Choose between a game of 3 or 5 sets: "))
+        if sets != 3 and sets != 5:
+            print("Invalid, try again")
+        else:
+            break
     if sets == 3:
         sets = 2
     elif sets == 5:
@@ -142,21 +147,23 @@ def tennis(name):
         point = int(input("Who won the point: "))
         match point:
             case 1 | 2:
-                print(tenis_expressions(points[point-1][i],points[point-1][i],name,sets))
+                tenis_expressions(points,sets)
                 points[point-1][i] += 15
                 if points[point-1][i] == 45:
                     points[point-1][i] -= 5
+                    print_progress(points,abc)
                     if points[0][i] == 40 and points[1][i] == 40:
-                        print_progress(points,abc)
-                        p = int(input("Who won the point: "))
-                        while points[0][i] and points[1][i] != 42:
+                        while points[0][i] != 42 and points[1][i] != 42:
+                            p = int(input("Who won the point: "))
+                            print_progress(points,abc)
                             if p == 1:
-                                points[0][i] += 1
+                                points[p-1][0] += 1
+                                tenis_expressions(points,sets)
                             elif p == 2:
-                                points[1][i] += 1
-                            if points[0][i] == 42:
-                                points[0][i+1] += 1
-                    tenis_expressions(points[point-1][i],points[point-1][i],name,sets)
+                                points[p-1][0] += 1
+                                tenis_expressions(points,sets)
+                            if points[0][0] or points[1][0] == 42:
+                                points[p-1][1] += 1
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
                 print_progress(points,abc)
