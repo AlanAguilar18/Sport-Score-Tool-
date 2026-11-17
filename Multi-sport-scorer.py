@@ -19,6 +19,19 @@ from pyfiglet import figlet_format
 init()
 import pyfiglet
 
+def save(name, sum):
+    #Saves the results in a simple way(I will use it later to calculate the porcentage of wins)
+    with open("results.txt", "a") as results:
+        results.write(f"{name[0]}={sum[0]}\n")
+        results.write(f"{name[1]}={sum[1]}\n")
+
+def read():
+    #It reads the results given on the sports
+    with open("results.txt", "r") as results:
+        for i in results:
+            name, result = i.strip().split("=")
+            print(f"{name}: {result}")
+
 def menu():
     #It helps the user see the options it has to choose between
     print("Choose an option: ")
@@ -26,6 +39,7 @@ def menu():
     print("2. Tennis")
     print("3. Soccer")
     print("4.End")
+    print("5. Read")
 
 def options(name):
     #The function shows a menu that helps the user choose an option of the three
@@ -193,10 +207,10 @@ def tennis(name):
                         points[0][i+1] = 0
                         points[1][i+1] = 0
                         if points[0][2] == sets or points[1][2] == sets:
-                            print(win(suma(points),abc))
+                            print(win(suma(points),name))
                             break
             case 3:
-                print(win(suma(points),abc))
+                print(win(suma(points),name))
                 break
             case 4:
                 print("Invalid, try again")
@@ -216,11 +230,14 @@ def names():
         name.append(names)
     return(name)
 
-def win(a):
+def win(a,name):
     #This function helps me simplifying in all the sports on the program to determine who is the winner
+    w = ["W","L"]
     if a[0] > a[1]:
+        save(name, w)
         return(pyfiglet.figlet_format(f"{name[0]} won\n{name[1]} lost"))
     elif a[1] > a[0]:
+        save(name, w[::-1])
         return(pyfiglet.figlet_format(f"{name[1]} won\n{name[0]} lost"))
     elif a[0] == a[1]:
         return(pyfiglet.figlet_format("TIE"))
@@ -259,7 +276,7 @@ def main():
     #The function helps organise all of the other functions into one
     name = names()
     abc = abbreviations(name)
-    print(abc[0], "vs" ,abc[1])
+    print(Style.BRIGHT + abc[0], "vs" ,abc[1] + Style.RESET_ALL)
     while True:
         menu()
         option = int(input("Choose: "))
@@ -272,6 +289,8 @@ def main():
                 print(soccer(name))
             case 4:
                 break
+            case 5:
+                read()
             case _:
                 print("Invalid, try again")
 main()
