@@ -10,7 +10,8 @@ from the menu and loading a function with only that sport’s scoring rules, so 
 the user having to remember them all. Also you can use the option 5 → read which will save the results and show the porcentage of victories in all the sports.
 
 External library:
-In my code I used the external library colorama which is really easy to install, you need to open cmd/terminal where you need to write "pip install colorama" and that´s it.
+In my code I used the external library colorama which is really easy to install, you need to open cmd/terminal where you need to write "pip install colorama",
+just a little tip is that I had some problems with it at first as I was not using the proper python intepreter (check that for no futher problems).
 """
 def menu():
     #It helps the user see the options it has to choose between
