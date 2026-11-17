@@ -133,7 +133,7 @@ def tennis(name):
     while True:
         sets = int(input("Choose between a game of 3 or 5 sets: "))
         if sets != 3 and sets != 5:
-            print("Invalid, try again")
+            print("Try again")
         else:
             break
     if sets == 3:
@@ -151,8 +151,8 @@ def tennis(name):
                 points[point-1][i] += 15
                 if points[point-1][i] == 45:
                     points[point-1][i] -= 5
-                    print_progress(points,abc)
                     if points[0][i] == 40 and points[1][i] == 40:
+                        print_progress(points,abc)                      
                         while points[0][i] != 42 and points[1][i] != 42:
                             p = int(input("Who won the point: "))
                             print_progress(points,abc)
@@ -161,9 +161,12 @@ def tennis(name):
                                 tenis_expressions(points,sets)
                             elif p == 2:
                                 points[p-1][0] += 1
-                                tenis_expressions(points,sets)
-                            if points[0][0] or points[1][0] == 42:
+                                print(f"{tenis_expressions(points,sets)} for {abc[p-1]}\n")
+                            if points[0][0] == 42 or points[1][0] == 42:
                                 points[p-1][1] += 1
+                                points[0][i] = 0
+                                points[1][i] = 0
+                                break
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
                 print_progress(points,abc)
@@ -185,7 +188,6 @@ def tennis(name):
                 break
             case 4:
                 print("Invalid, try again")
-
 def print_progress(a,abc):
     #This function helps me show how the game is going as it is on the Tv
     print(f"{a[0]}: {abc[0]}")
@@ -223,22 +225,18 @@ def abbreviations(name):
     return a
 
 def tenis_expressions(a,b,n,sets):
-    if a == 0 and b == 0:
-        return("Love")
-    elif a == 40 and b == 40:
-        return("Deuce")
-    elif a > b and a >= 40:
-        if a - b == 1:
-            return(f"Advantage {n[0]}")
-        elif a - b >= 2:
-            return(f"Win for {n[0]}")
-    elif b > a and b >= 40:
-        if b - a == 1:
-            return(f"Advantage {n[1]}")
-        elif b - a >= 2:
-            return(f"Win for {n[1]}")
-    elif a[0] or b[0] == 40 and a[1] or b[1] == 5 and a[2] or b[2] == sets - 1:
-        return("Match point")
+    for i in range(len(a)):
+        if a[i][0] == 0:
+            print("Love\n")
+            break
+        elif a[0][0] == 40 and a[1][0] == 40:
+            print("Deuce\n")
+        elif a[i][0] == 41:
+            print("Advantage")
+        elif a[i][1] == 5:
+            print("Game point\n")
+        elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 1:
+            print("Match point\n")
 
 def main():
     #The function helps organise all of the other functions into one
