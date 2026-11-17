@@ -29,7 +29,10 @@ def read():
     #It reads the results given on the sports
     with open("results.txt", "r") as results:
         for i in results:
-            name, result = i.strip().split("=")
+            a = i.strip()
+            p = a.split("=")
+            name = p[0]
+            result = p[1]
             print(f"{name}: {result}")
 
 def menu():
