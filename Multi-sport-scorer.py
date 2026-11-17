@@ -124,33 +124,6 @@ def basketball(name):
                     print("Invalid, try again")
 
 def soccer(name):
-    goals = [
-        [0,0],
-        [0,0]
-        ]
-    abc = abbreviations(name)
-    i = 0
-    while i < 2:
-        while True:
-            options(name)
-            print("4 → Half time")
-            who = int(input("Which team scored: "))
-            match who:
-                case 1 | 2:
-                    goals[who-1][i] +=1
-                case 3:
-                    print_progress(sum(goals),abc)
-                    return(win(sum(goals),name))
-                case 4:
-                    i += 1
-                    if i == 2:
-                        print_progress(sum(goals),abc)
-                        return(win(sum(goals),name))
-                case _:
-                    print("Invalid")
-            print_progress(goals,abc)
-
-def soccer(name):
     #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
     goals = [
         [0,0],
