@@ -199,6 +199,24 @@ def abbreviations(name):
         a.append(short.upper())
     return a
 
+def tenis_expressions(a,b,n,sets):
+    if a == 0 and b == 0:
+        return("Love")
+    elif a == 40 and b == 40:
+        return("Deuce")
+    elif a > b and a >= 40:
+        if a - b == 1:
+            return(f"Advantage {n[0]}")
+        elif a - b >= 2:
+            return(f"Win for {n[0]}")
+    elif b > a and b >= 40:
+        if b - a == 1:
+            return(f"Advantage {n[1]}")
+        elif b - a >= 2:
+            return(f"Win for {n[1]}")
+    elif a[0] or b[0] == 40 and a[1] or b[1] == 5 and a[2] or b[2] == sets - 1:
+        return("Match point")
+
 def main():
     #The function helps organise all of the other functions into one
     name = names()
