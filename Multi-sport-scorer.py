@@ -155,13 +155,16 @@ def tennis(name):
                         print_progress(points,abc)                      
                         while points[0][i] != 42 and points[1][i] != 42:
                             p = int(input("Who won the point: "))
-                            print_progress(points,abc)
                             if p == 1:
                                 points[p-1][0] += 1
-                                tenis_expressions(points,sets)
+                                print(tenis_expressions(points,sets)," for ",abc[p-1],"\n")
                             elif p == 2:
                                 points[p-1][0] += 1
-                                print(f"{tenis_expressions(points,sets)} for {abc[p-1]}\n")
+                                print(tenis_expressions(points,sets)," for ",abc[p-1],"\n")
+                            if points[0][0] == 41 and points[1][0] == 41:
+                                points[0][0] = 40
+                                points[1][0] = 40
+                                tenis_expressions(points,sets)
                             if points[0][0] == 42 or points[1][0] == 42:
                                 points[p-1][1] += 1
                                 points[0][i] = 0
@@ -188,6 +191,7 @@ def tennis(name):
                 break
             case 4:
                 print("Invalid, try again")
+
 def print_progress(a,abc):
     #This function helps me show how the game is going as it is on the Tv
     print(f"{a[0]}: {abc[0]}")
@@ -231,8 +235,9 @@ def tenis_expressions(a,sets):
             break
         elif a[0][0] == 40 and a[1][0] == 40:
             print("Deuce\n")
+            break
         elif a[i][0] == 41:
-            print("Advantage")
+            return("Advantage")
         elif a[i][1] == 5:
             print("Game point\n")
         elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 1:
