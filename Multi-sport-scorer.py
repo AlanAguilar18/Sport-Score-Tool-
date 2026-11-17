@@ -172,17 +172,14 @@ def tennis(name):
                                 break
                 elif points[point-1][i] == 55:
                     points[point-1][i] += 5
-                print_progress(points,abc)
                 if points[point-1][i] == 60:
                     points[point-1][i+1] += 1
                     points[0][i] = 0
                     points[1][i] = 0
-                    print_progress(points,abc)
                     if points[point-1][i+1] == 6:
                         points[point-1][i+2] += 1
                         points[0][i+1] = 0
                         points[1][i+1] = 0
-                        print_progress(points,abc)
                         if points[0][2] == sets or points[1][2] == sets:
                             print(win(suma(points),abc))
                             break
@@ -191,11 +188,12 @@ def tennis(name):
                 break
             case 4:
                 print("Invalid, try again")
+        print_progress(points,abc)
 
 def print_progress(a,abc):
     #This function helps me show how the game is going as it is on the Tv
     print(f"{a[0]}: {abc[0]}")
-    print(f"{a[1]}: {abc[1]}")
+    print(f"{a[1]}: {abc[1]}\n")
 
 def names():
 #It helps introduce identity to the user in the game
@@ -230,7 +228,7 @@ def abbreviations(name):
 
 def tenis_expressions(a,sets):
     for i in range(len(a)):
-        if a[i][0] == 0:
+        if a[0][0] == 0 and a[1][0] == 0:
             print("Love\n")
             break
         elif a[0][0] == 40 and a[1][0] == 40:
@@ -240,7 +238,7 @@ def tenis_expressions(a,sets):
             return("Advantage")
         elif a[i][1] == 5:
             print("Game point\n")
-        elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 1:
+        elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 2:
             print("Match point\n")
 
 def main():
