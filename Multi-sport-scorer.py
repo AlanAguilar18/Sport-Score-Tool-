@@ -11,8 +11,14 @@ the user having to remember them all. Also you can use the option 5 → read whi
 
 External library:
 In my code I used the external library colorama which is really easy to install, you need to open cmd/terminal where you need to write "pip install colorama",
-just a little tip is that I had some problems with it at first as I was not using the proper python intepreter (check that for no futher problems).
+just a little tip is that I had some problems with it at first as I was not using the proper python intepreter (check that for no futher problems). Well I also 
+added pyfiglet that is really similar to colorama where you paste "python -m pip install pyfiglet" on the terminal and reload the page with "Developer: Reload Window".
 """
+from colorama import Fore, Style, init
+from pyfiglet import figlet_format
+init()
+import pyfiglet
+
 def menu():
     #It helps the user see the options it has to choose between
     print("Choose an option: ")
@@ -36,6 +42,7 @@ def options_basketball():
     print("3. Foul → 1 or 2 points")
 
 def suma(a):
+    #This function helps me as I now use matrices to calculate the total in the game
     Suma = []
     for i in a:
         total = 0
@@ -220,6 +227,7 @@ def win(a):
         return("DNP")
 
 def abbreviations(name):
+    #In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
     a = []
     for i in name:
         parts = i.split()
@@ -231,6 +239,7 @@ def abbreviations(name):
     return a
 
 def tenis_expressions(a,sets):
+    #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
     for i in range(len(a)):
         if a[0][0] == 0 and a[1][0] == 0:
             print("Love\n")
