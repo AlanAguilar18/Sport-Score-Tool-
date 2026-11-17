@@ -224,7 +224,7 @@ def abbreviations(name):
         a.append(short.upper())
     return a
 
-def tenis_expressions(a,b,n,sets):
+def tenis_expressions(a,sets):
     for i in range(len(a)):
         if a[i][0] == 0:
             print("Love\n")
