@@ -16,33 +16,39 @@ added pyfiglet that is really similar to colorama where you paste "python -m pip
 """
 from colorama import Fore, Style, init
 from pyfiglet import figlet_format
-init()
-import pyfiglet
+
+init(autoreset=True)
 
 def save(name, sum):
-    #Saves the results in a simple way(I will use it later to calculate the porcentage of wins)
-    with open("results.txt", "a") as results:
-        results.write(f"{name[0]}={sum[0]}\n")
-        results.write(f"{name[1]}={sum[1]}\n")
+    #Save the result (W or L) of each player in the results file.
+    try:
+        with open("results.txt", "a") as results:
+            results.write(f"{name[0]}={sum[0]}\n")
+            results.write(f"{name[1]}={sum[1]}\n")
+    except FileExistsError:
+        print("The file does not exist")
 
 def read():
-    #It reads the results given on the sports
-    with open("results.txt", "r") as results:
-        for i in results:
-            a = i.strip()
-            p = a.split("=")
-            name = p[0]
-            result = p[1]
-            print(f"{name}: {result}")
+    #It prints the results saved in the results file given by the save function.
+    try:
+        with open("results.txt", "r") as results_file:
+            for i in results_file:
+                a = i.strip()
+                p = a.split("=")
+                name = p[0]
+                result = p[1]
+                print(f"{name}: {result}")
+    except FileNotFoundError:
+        print("The file does not exist")
 
 def menu():
-    #It helps the user see the options it has to choose between
+    #Prints the main menu with the available options of the different sports.
     print("Choose an option: ")
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
-    print("4.End")
-    print("5. Read")
+    print("4. End")
+    print("5. Read the last matches")
 
 def options(name):
     #The function shows a menu that helps the user choose an option of the three
