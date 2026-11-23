@@ -16,7 +16,7 @@ added pyfiglet that is really similar to colorama where you paste "python -m pip
 """
 from colorama import Fore, Style, init
 from pyfiglet import figlet_format
-
+import pyfiglet
 init(autoreset=True)
 
 def save(name, sum):
