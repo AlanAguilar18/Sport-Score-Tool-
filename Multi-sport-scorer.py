@@ -83,7 +83,7 @@ def sum(a):
     return(Sum)
 
 def basketball(name):
-    #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
+    #Keep the score of a basketball game quarter by quarter played by 2 teams.
     game = [
         [0,0,0,0],
         [0,0,0,0]
@@ -141,7 +141,7 @@ def basketball(name):
                     print("Invalid, try again")
 
 def soccer(name):
-    #It calculates the score of every goal made between 2 teams/individuals and can determine who wins or loses
+    #Keep the score of a soccer game half by half played by 2 teams.
     goals = [
         [0,0],
         [0,0]
@@ -169,7 +169,7 @@ def soccer(name):
             print_progress(goals,abc)
 
 def tennis(name):
-    #It calculates the score of every point made, the program also can dertermine when it is a game and a set between 2 individuals and can determine who wins or loses
+    #Keep the score of a tennis match until a player wins it by the sets the player decides.
     points = [[0,0,0],
               [0,0,0]
               ]
@@ -239,7 +239,7 @@ def print_progress(a,abc):
     print(f"{a[1]}: {abc[1]}\n")
 
 def names():
-#It helps introduce identity to the user in the game
+    #Ask for the names of the two players/teams and return them in a list.
     name = []
     for i in range(2):
         names = input("Name of player: ")
