@@ -290,7 +290,7 @@ def tenis_expressions(a,sets):
             print(Fore.RED + "Match point\n")
 
 def main():
-    #The function helps organise all of the other functions into one
+    #Ask for the players and show the main menu that organises all the games until the user ends it.
     name = names()
     abc = abbreviations(name)
     print(Style.BRIGHT + abc[0], "vs" ,abc[1] + Style.RESET_ALL)
