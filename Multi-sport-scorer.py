@@ -50,6 +50,13 @@ def menu():
     print("4. End")
     print("5. Read the last matches")
 
+def ask_number(message):
+    while True:
+        try:
+            return(int(input(message)))
+        except ValueError:
+            print("Invalid type a number")
+
 def options(name):
     #This one prints the options to choose a player/team or end the game.
     print("Choose an option: ")
@@ -65,14 +72,14 @@ def options_basketball():
     print("3. Foul → 1 or 2 points")
 
 def sum(a):
-    #This function helps me as I now use matrices to calculate the total in the game
-    Suma = []
+    #Thsi function returns a list with the sum of the matrix.
+    Sum = []
     for i in a:
         total = 0
         for j in i:
             total += j
-        Suma.append(total)
-    return(Suma)
+        Sum.append(total)
+    return(Sum)
 
 def basketball(name):
     #It calculates the score of every shot made on court between 2 teams/individuals and can determine who wins or loses
