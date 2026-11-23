@@ -51,6 +51,7 @@ def menu():
     print("5. Read the last matches")
 
 def ask_number(message):
+    #It helps validating the inputs so it only gives me a number.
     while True:
         try:
             return(int(input(message)))
