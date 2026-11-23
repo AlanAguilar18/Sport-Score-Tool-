@@ -292,8 +292,8 @@ def tenis_expressions(a,sets):
 def main():
     #Ask for the players and show the main menu that organises all the games until the user ends it.
     name = names()
-    abc = abbreviations(name)
-    print(Style.BRIGHT + abc[0], "vs" ,abc[1] + Style.RESET_ALL)
+    short_abbreviation = abbreviations(name)
+    print(Style.BRIGHT + f"{short_abbreviation[0]} vs {short_abbreviation[1]}" + Style.RESET_ALL)
     while True:
         menu()
         option = int(input("Choose: "))
