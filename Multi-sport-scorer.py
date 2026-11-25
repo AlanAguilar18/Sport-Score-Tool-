@@ -247,10 +247,10 @@ def tennis(name):
                 print("Invalid, try again")
         print_progress(points,abc)
 
-def print_progress(a,abc):
+def print_progress(score,short_abbreviation):
     #This function helps me show how the game is going as it is on the Tv
-    print(f"{a[0]}: {abc[0]}")
-    print(f"{a[1]}: {abc[1]}\n")
+    print(f"{score[0]}: {short_abbreviation[0]}")
+    print(f"{score[1]}: {short_abbreviation[1]}\n")
 
 def names():
     #Ask for the names of the two players/teams and return them in a list.
@@ -264,31 +264,30 @@ def names():
             name.append(names)
     return(name)
 
-def win(a,name):
+def win(sum_per_player,name):
     #This function helps me simplifying in all the sports on the program to determine who is the winner
     w = ["W","L"]
-    if a[0] > a[1]:
+    if sum_per_player[0] > sum_per_player[1]:
         save(name, w)
-        return(pyfiglet.figlet_format(f"{name[0]} won\n{name[1]} lost"))
-    elif a[1] > a[0]:
+        return(pyfiglet.figlet_format(f"{name[0]}    won\n{name[1]}    lost"))
+    elif sum_per_player[1] > sum_per_player[0]:
         save(name, w[::-1])
-        return(pyfiglet.figlet_format(f"{name[1]} won\n{name[0]} lost"))
-    elif a[0] == a[1]:
+        return(pyfiglet.figlet_format(f"{name[1]}    won\n{name[0]}    lost"))
+    elif sum_per_player[0] == sum_per_player[1]:
         return(pyfiglet.figlet_format("TIE"))
     else:
         return("DNP")
-
 def abbreviations(name):
     #In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
-    a = []
-    for i in name:
-        parts = i.split()
+    abbreviation = []
+    for words in name:
+        parts = words.split()
         if len(parts) > 1:
-            short = parts[0][0] + parts[1][0:2]
+            short_form = parts[0][0] + parts[1][0:2]
         else:
-            short = i[:3]
-        a.append(short.upper())
-    return a
+            short_form = parts[:3]
+        abbreviation.append(short_form.upper())
+    return abbreviation
 
 def tenis_expressions(points,sets):
     #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
