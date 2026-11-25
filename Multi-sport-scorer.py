@@ -182,13 +182,13 @@ def soccer(name,short_abbreviation):
                     print("Invalid")
             print_progress(score,short_abbreviation)
 
-def tennis(name):
+def tennis(name,short_abbreviation):
     #Keep the score of a tennis match until a player wins it by the sets the player decides.
-    points = [[0,0,0],
+    score = [[0,0,0],
               [0,0,0]
               ]
     while True:
-        sets = int(input("Choose between a game of 3 or 5 sets: "))
+        sets = ask_number("Choose between a game of 3 or 5 sets: ")
         if sets != 3 and sets != 5:
             print("Try again")
         else:
@@ -197,55 +197,55 @@ def tennis(name):
         sets = 2
     elif sets == 5:
         sets = 3
-    abc = abbreviations(name)
     i = 0
-    while points[0][2] < sets and points[1][2] < sets:
+    while score[0][2] < sets and score[1][2] < sets:
         options(name)
-        point = int(input("Who won the point: "))
+        point = ask_number("Who won the point: ")
         match point:
             case 1 | 2:
-                tenis_expressions(points,sets)
-                points[point-1][i] += 15
-                if points[point-1][i] == 45:
-                    points[point-1][i] -= 5
-                    if points[0][i] == 40 and points[1][i] == 40:
-                        print_progress(points,abc)                      
-                        while points[0][i] != 42 and points[1][i] != 42:
+                tenis_expressions(score,sets)
+                score[point-1][i] += 15
+                if score[point-1][i] == 45:
+                    score[point-1][i] -= 5
+                    if score[0][i] == 40 and score[1][i] == 40:
+                        print(tenis_expressions(score,sets))
+                        print_progress(score,short_abbreviation)                      
+                        while score[0][i] != 42 and score[1][i] != 42:
                             p = int(input("Who won the point: "))
                             if p == 1:
-                                points[p-1][0] += 1
-                                print(tenis_expressions(points,sets)," for ",abc[p-1],"\n")
+                                score[p-1][0] += 1
+                                print(tenis_expressions(score,sets)," for ",short_abbreviation[p-1],"\n")
                             elif p == 2:
-                                points[p-1][0] += 1
-                                print(tenis_expressions(points,sets)," for ",abc[p-1],"\n")
-                            if points[0][0] == 41 and points[1][0] == 41:
-                                points[0][0] = 40
-                                points[1][0] = 40
-                                tenis_expressions(points,sets)
-                            if points[0][0] == 42 or points[1][0] == 42:
-                                points[p-1][1] += 1
-                                points[0][i] = 0
-                                points[1][i] = 0
+                                score[p-1][0] += 1
+                                print(tenis_expressions(score,sets)," for ",short_abbreviation[p-1],"\n")
+                            if score[0][0] == 41 and score[1][0] == 41:
+                                score[0][0] = 40
+                                score[1][0] = 40
+                                tenis_expressions(score,sets)
+                            if score[0][0] == 42 or score[1][0] == 42:
+                                score[p-1][1] += 1
+                                score[0][i] = 0
+                                score[1][i] = 0
                                 break
-                elif points[point-1][i] == 55:
-                    points[point-1][i] += 5
-                if points[point-1][i] == 60:
-                    points[point-1][i+1] += 1
-                    points[0][i] = 0
-                    points[1][i] = 0
-                    if points[point-1][i+1] == 6:
-                        points[point-1][i+2] += 1
-                        points[0][i+1] = 0
-                        points[1][i+1] = 0
-                        if points[0][2] == sets or points[1][2] == sets:
-                            print(win(sum(points),name))
+                elif score[point-1][i] == 55:
+                    score[point-1][i] += 5
+                if score[point-1][i] == 60:
+                    score[point-1][i+1] += 1
+                    score[0][i] = 0
+                    score[1][i] = 0
+                    if score[point-1][i+1] == 6:
+                        score[point-1][i+2] += 1
+                        score[0][i+1] = 0
+                        score[1][i+1] = 0
+                        if score[0][2] == sets or score[1][2] == sets:
+                            print(win(sum(score),name))
                             break
             case 3:
-                print(win(sum(points),name))
+                print(win(sum(score),name))
                 break
             case 4:
                 print("Invalid, try again")
-        print_progress(points,abc)
+        print_progress(score,short_abbreviation)
 
 def print_progress(score,short_abbreviation):
     #This function helps me show how the game is going as it is on the Tv
@@ -277,6 +277,7 @@ def win(sum_per_player,name):
         return(pyfiglet.figlet_format("TIE"))
     else:
         return("DNP")
+
 def abbreviations(name):
     #In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
     abbreviation = []
