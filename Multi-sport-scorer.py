@@ -58,13 +58,13 @@ def read_or_clear():
                 print("The file does not exist")
 
 def menu():
-    #Prints the main menu with the available options of the different sports.
+    #Prints the main menu with the available options of the different sports and the option to read the last results.
     print("Choose an option: ")
     print("1. Basketball")
     print("2. Tennis")
     print("3. Soccer")
     print("4. End")
-    print("5. Read the last matches")
+    print("5. Read or Clear")
 
 def ask_number(message):
     #It helps validating the inputs so it only gives me a number.
@@ -90,13 +90,13 @@ def options_basketball():
 
 def sum(a):
     #Thsi function returns a list with the sum of the matrix.
-    Sum = []
-    for i in a:
+    sum = []
+    for i in matrix:
         total = 0
         for j in i:
             total += j
-        Sum.append(total)
-    return(Sum)
+        sum.append(total)
+    return(sum)
 
 def basketball(name,short_abbreviation):
     #Keep the score of a basketball game quarter by quarter played by 2 teams.
