@@ -98,43 +98,42 @@ def sum(a):
         Sum.append(total)
     return(Sum)
 
-def basketball(name):
+def basketball(name,short_abbreviation):
     #Keep the score of a basketball game quarter by quarter played by 2 teams.
-    game = [
+    score = [
         [0,0,0,0],
         [0,0,0,0]
         ]
-    abc = abbreviations(name)
     i = 0
     while i < 4:
         while True:
             options(name)
             print("4 → Next quarter")
             print(" Q1|Q2|Q3|Q4")
-            print_progress(game,abc)
-            point = int(input("¿Who won the point? "))
+            print_progress(score,short_abbreviation)
+            point = ask_number("¿Who won the point? ")
             match point:
                 case 1 | 2:
                     options_basketball()
-                    canasta1 = int(input("¿What kind of action was it? "))
-                    match canasta1:
+                    basket = ask_number("¿What kind of action was it? ")
+                    match basket:
                         case 1:
-                            game[point-1][i] += 2
+                            score[point-1][i] += 2
                         case 2:
-                            game[point-1][i] += 3
+                            score[point-1][i] += 3
                         case 3:
-                            foul = int(input("First shoot(1 → yes or 2 → no): "))
-                            match foul:
+                            first_foul = ask_number("First shoot\n1 → in\n2 → out ")
+                            match first_foul:
                                 case 1:
-                                    game[point-1][i] += 1
+                                    score[point-1][i] += 1
                                 case 2:
                                     print("Next time")
                                 case _:
                                     print("Invalid")
-                            foul2 = int(input("Second shoot(1 → yes or 2 → no): "))
+                            foul2 = ask_number("Second shoot\n1 → in\n 2 → out ")
                             match foul2:
                                 case 1:
-                                    game[point-1][i] += 1
+                                    score[point-1][i] += 1
                                 case 2:
                                     print("Really???")
                                 case _:
@@ -143,18 +142,44 @@ def basketball(name):
                             print("Invalid")
                 case 3:
                     print(" Q1|Q2|Q3|Q4")
-                    print_progress(game,abc)
-                    print_progress(sum(game),abc)
-                    return win(sum(game),name)
+                    print_progress(score,short_abbreviation)
+                    print_progress(sum(score),short_abbreviation)
+                    return win(sum(score),name)
                 case 4:
                     i += 1
                     if i == 4:
                         print(" Q1|Q2|Q3|Q4")
-                        print_progress(game,abc)
-                        print_progress(sum(game),abc)
-                        return win(sum(game),name)
+                        print_progress(score,short_abbreviation)
+                        print_progress(sum(score),short_abbreviation)
+                        return win(sum(score),name)
                 case _:
                     print("Invalid, try again")
+
+def soccer(name,short_abbreviation):
+    score = [
+        [0,0],
+        [0,0]
+        ]
+    i = 0
+    while i < 2:
+        while True:
+            options(name)
+            print("4 → Half time")
+            who = ask_number("Which team scored: ")
+            match who:
+                case 1 | 2:
+                    score[who-1][i] +=1
+                case 3:
+                    print_progress(sum(score),short_abbreviation)
+                    return(win(sum(score),name))
+                case 4:
+                    i += 1
+                    if i == 2:
+                        print_progress(sum(score),short_abbreviation)
+                        return(win(sum(score),name))
+                case _:
+                    print("Invalid")
+            print_progress(score,short_abbreviation)
 
 def soccer(name):
     #Keep the score of a soccer game half by half played by 2 teams.
@@ -345,4 +370,5 @@ def main():
                     print("Invalid, try again")
         except ValueError:
                 print("Invalid please try again")
+
 main()
