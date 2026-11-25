@@ -244,8 +244,11 @@ def names():
     name = []
     for i in range(2):
         names = input("Name of player: ")
-        names = names.strip().title()
-        name.append(names)
+        if len(names) == 0:
+            name.append("Player " + str(i+1))
+        else:
+            names = names.strip().title()
+            name.append(names)
     return(name)
 
 def win(a,name):
@@ -297,18 +300,22 @@ def main():
     print(Style.BRIGHT + f"{short_abbreviation[0]} vs {short_abbreviation[1]}" + Style.RESET_ALL)
     while True:
         menu()
-        option = int(input("Choose: "))
-        match option:
-            case 1:
-                print(basketball(name))
-            case 2:
-                print(tennis(name))
-            case 3:
-                print(soccer(name))
-            case 4:
-                break
-            case 5:
-                read()
-            case _:
-                print("Invalid, try again")
+        option = ask_number("Choose: ")
+        try:
+            match option:
+                case 1:
+                    print(basketball(name))
+                case 2:
+                    print(tennis(name))
+                case 3:
+                    print(soccer(name))
+                case 4:
+                    break
+                case 5:
+                    read()
+                case _:
+                    print("Invalid try again")
+        except ValueError:
+                print("Invalid please try again")
+
 main()
