@@ -32,7 +32,7 @@ def save(name, sum):
 def read():
     #It prints the results saved in the results file given by the save function.
     try:
-        with open("results.txt", "r") as results_file:
+        with open("results.txt") as results_file:
             for i in results_file:
                 a = i.strip()
                 p = a.split("=")
