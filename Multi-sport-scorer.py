@@ -29,18 +29,33 @@ def save(name, sum):
     except FileExistsError:
         print("The file does not exist")
 
-def read():
+def read_or_clear():
     #It prints the results saved in the results file given by the save function.
-    try:
-        with open("results.txt") as results_file:
-            for i in results_file:
-                a = i.strip()
-                p = a.split("=")
-                name = p[0]
-                result = p[1]
-                print(f"{name}: {result}")
-    except FileNotFoundError:
-        print("The file does not exist")
+    option = ask_number("Choose an option: ")
+    print("1. Read")
+    print("2. Clear")
+    match option:
+        case 1:
+            try:
+                with open("results.txt") as results_file:
+                    for i in results_file:
+                        parts = i.strip()
+                        parts = parts.split("=")
+                        name,result = parts
+                        print(f"{name}: {result}")
+            except FileNotFoundError:
+                print("The file doesn't exist yet")
+        case 2:
+            try:
+                print("File cleared\n")
+                with open("results.txt", "w"):
+                    for i in results_file:
+                        parts = i.strip()
+                        parts = parts.split("=")
+                        name,result = parts
+                        print(f"{name}: {result}")
+            except FileNotFoundError:
+                print("The file does not exist")
 
 def menu():
     #Prints the main menu with the available options of the different sports.
@@ -277,20 +292,20 @@ def abbreviations(name):
         a.append(short.upper())
     return a
 
-def tenis_expressions(a,sets):
+def tenis_expressions(points,sets):
     #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
-    for i in range(len(a)):
-        if a[0][0] == 0 and a[1][0] == 0:
+    for i in range(len(points)):
+        if points[0][0] == 0 and points[1][0] == 0:
             print(Fore.GREEN + "Love\n")
             break
-        elif a[0][0] == 40 and a[1][0] == 40:
+        elif points[0][0] == 40 and points[1][0] == 40:
             print(Fore.YELLOW + "Deuce\n")
             break
-        elif a[i][0] == 41:
-            return("Advantage")
-        elif a[i][1] == 5:
+        elif points[i][0] == 41:
+            return(Fore.LIGHTRED_EX + "Advantage")
+        elif points[i][1] == 5:
             print(Fore.RED + "Game point\n")
-        elif a[i][0] == 40 and a[i][1] == 5 and a[i][2] == sets - 2:
+        elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
             print(Fore.RED + "Match point\n")
 
 def main():
@@ -312,7 +327,7 @@ def main():
                 case 4:
                     break
                 case 5:
-                    read()
+                    read_or_clear()
                 case _:
                     print("Invalid try again")
         except ValueError:
