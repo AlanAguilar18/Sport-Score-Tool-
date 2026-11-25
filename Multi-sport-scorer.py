@@ -308,6 +308,15 @@ def tenis_expressions(points,sets):
         elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
             print(Fore.RED + "Match point\n")
 
+def welcome(option):
+    match option:
+        case 1:
+            print(Fore.RED + "Basketball")
+        case 2:
+            print(Fore.GREEN + "Tennis")
+        case 3:
+            print(Fore.WHITE + "Soccer")
+
 def main():
     #Ask for the players and show the main menu that organises all the games until the user ends it.
     name = names()
@@ -316,21 +325,24 @@ def main():
     while True:
         menu()
         option = ask_number("Choose: ")
+        print()
         try:
             match option:
                 case 1:
-                    print(basketball(name))
+                    welcome(option)
+                    print(basketball(name,short_abbreviation))
                 case 2:
-                    print(tennis(name))
+                    welcome(option)
+                    print(tennis(name,short_abbreviation))
                 case 3:
-                    print(soccer(name))
+                    welcome(option)
+                    print(soccer(name,short_abbreviation))
                 case 4:
                     break
                 case 5:
                     read_or_clear()
                 case _:
-                    print("Invalid try again")
+                    print("Invalid, try again")
         except ValueError:
                 print("Invalid please try again")
-
 main()
