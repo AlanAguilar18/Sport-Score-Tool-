@@ -10,9 +10,10 @@ from the menu and loading a function with only that sport’s scoring rules, so 
 the user having to remember them all. Also you can use the option 5 → read which will save the results and show the porcentage of victories in all the sports.
 
 External library:
-In my code I used the external library colorama which is really easy to install, you need to open cmd/terminal where you need to copy and paste "pip install colorama",
-just a little tip is that I had some problems with it at first as I was not using the proper python intepreter (check that for no futher problems). Well I also 
-added pyfiglet that is really similar to colorama where you paste "python -m pip install pyfiglet" on the terminal and reload the page with "Developer: Reload Window".
+In my code I used two external libraries colorama and pyfiglet which are really easy to install, you need to open a new cmd/terminal where you will have to
+copy and paste "python -m pip install colorama" and "python -m pip install pyfiglet", just a little tip is that I had some problems with it at first as I was
+not using the proper python intepreter (check that for no futher problems). Well I also reloaded the page with "Developer: Reload Window" that opens up when 
+Ctrl + Shift + P.
 """
 from colorama import Fore, Style, init
 from pyfiglet import figlet_format
