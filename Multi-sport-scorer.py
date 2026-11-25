@@ -156,6 +156,7 @@ def basketball(name,short_abbreviation):
                     print("Invalid, try again")
 
 def soccer(name,short_abbreviation):
+    #Keep the score of a soccer game half by half played by 2 teams.
     score = [
         [0,0],
         [0,0]
@@ -180,34 +181,6 @@ def soccer(name,short_abbreviation):
                 case _:
                     print("Invalid")
             print_progress(score,short_abbreviation)
-
-def soccer(name):
-    #Keep the score of a soccer game half by half played by 2 teams.
-    goals = [
-        [0,0],
-        [0,0]
-        ]
-    abc = abbreviations(name)
-    i = 0
-    while i < 2:
-        while True:
-            options(name)
-            print("4 → Half time")
-            who = int(input("Which team scored: "))
-            match who:
-                case 1 | 2:
-                    goals[who-1][i] +=1
-                case 3:
-                    print_progress(sum(goals),abc)
-                    return(win(sum(goals),name))
-                case 4:
-                    i += 1
-                    if i == 2:
-                        print_progress(sum(goals),abc)
-                        return(win(sum(goals),name))
-                case _:
-                    print("Invalid")
-            print_progress(goals,abc)
 
 def tennis(name):
     #Keep the score of a tennis match until a player wins it by the sets the player decides.
