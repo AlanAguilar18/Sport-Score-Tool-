@@ -49,11 +49,8 @@ def read_or_clear():
         case 2:
             print("File cleared\n")
             with open("results.txt", "w"):
-                for i in results_file:
-                    parts = i.strip()
-                    parts = parts.split("=")
-                    name,result = parts
-                    print(f"{name}: {result}")
+                pass
+    print()
 
 def menu():
     #Prints the main menu with the available options of the different sports and the option to read the last results.
