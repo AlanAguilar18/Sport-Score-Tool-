@@ -7,7 +7,8 @@ Author: Alan
 Context:
 Every sport has a different form to score, so this program solves that by letting the user pick one sport of the options 
 from the menu and loading a function with only that sport’s scoring rules, so it tracks the match correctly without 
-the user having to remember them all. Also you can use the option 5 → read which will save the results and show the porcentage of victories in all the sports.
+the user having to remember them all. Also you can use the option 5 → read/clear where the results are saved automatically and
+it can also clear the document.
 
 External library:
 In my code I used two external libraries colorama and pyfiglet which are really easy to install, you need to open a new cmd/terminal where you will have to
