@@ -273,12 +273,12 @@ def win(sum_per_player,name):
     w = ["W","L"]
     if sum_per_player[0] > sum_per_player[1]:
         save(name, w)
-        return(pyfiglet.figlet_format(f"{name[0]}    won\n{name[1]}    lost"))
+        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[0]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[1]}    lost")))
     elif sum_per_player[1] > sum_per_player[0]:
         save(name, w[::-1])
-        return(pyfiglet.figlet_format(f"{name[1]}    won\n{name[0]}    lost"))
+        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
-        return(pyfiglet.figlet_format("TIE"))
+        return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
     else:
         return("DNP")
 
