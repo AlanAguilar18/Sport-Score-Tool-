@@ -20,7 +20,7 @@ import pyfiglet
 init(autoreset=True)
 
 def save(name, sum):
-    # Save the result (W or L) of each player in the results file.
+    # Save the result (W or L) of each player in the results 
     try:
         with open("results.txt", "a") as results:
             results.write(f"{name[0]}={sum[0]}\n")
@@ -82,6 +82,10 @@ def options_basketball():
     print("3. Foul → 1 or 2 points\n")
 
 def sum(matrix):
+    """
+
+
+    """
     # This function returns a list with the sum of the matrix.
     sum = []
     for i in matrix:
@@ -92,6 +96,10 @@ def sum(matrix):
     return sum
 
 def basketball(name, short_abbreviation):
+    """
+
+
+    """
     # Keep the score of a basketball game quarter by quarter played by 2 teams.
     score = [
         [0,0,0,0],
@@ -149,6 +157,10 @@ def basketball(name, short_abbreviation):
                     print("Invalid, try again")
 
 def soccer(name, short_abbreviation):
+    """
+
+
+    """
     # Keep the score of a soccer game half by half played by 2 teams.
     score = [
         [0,0],
@@ -176,6 +188,10 @@ def soccer(name, short_abbreviation):
             show_matrix(score, short_abbreviation)
 
 def tennis(name, short_abbreviation):
+    """
+
+
+    """
     # Keep the score of a tennis match until a player wins it by the sets the player decides.
     score = [[0,0,0],
              [0,0,0]
@@ -240,6 +256,10 @@ def tennis(name, short_abbreviation):
         print()
 
 def show_matrix(score, short_abbreviation):
+    """
+
+
+    """
     # This function helps me show how the game is going as it is on the Tv
     for i in range(len(score)):
         for j in range(len(score[i])):
