@@ -46,16 +46,13 @@ def read_or_clear():
             except FileNotFoundError:
                 print("The file doesn't exist yet")
         case 2:
-            try:
-                print("File cleared\n")
-                with open("results.txt", "w"):
-                    for i in results_file:
-                        parts = i.strip()
-                        parts = parts.split("=")
-                        name,result = parts
-                        print(f"{name}: {result}")
-            except FileNotFoundError:
-                print("The file does not exist")
+            print("File cleared\n")
+            with open("results.txt", "w"):
+                for i in results_file:
+                    parts = i.strip()
+                    parts = parts.split("=")
+                    name,result = parts
+                    print(f"{name}: {result}")
 
 def menu():
     #Prints the main menu with the available options of the different sports and the option to read the last results.
