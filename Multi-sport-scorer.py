@@ -17,7 +17,6 @@ not using the proper python intepreter (check that for no futher problems). Well
 Ctrl + Shift + P.
 """
 from colorama import Fore, Style, init
-from pyfiglet import figlet_format
 import pyfiglet
 init(autoreset=True)
 
