@@ -206,22 +206,22 @@ def tennis(name,short_abbreviation):
                 if score[point-1][i] == 45:
                     score[point-1][i] -= 5
                     if score[0][i] == 40 and score[1][i] == 40:
-                        print(tenis_expressions(score,sets))
+                        tenis_expressions(score,sets)
                         show_matrix(score,short_abbreviation)            
                         while score[0][i] != 42 and score[1][i] != 42:
-                            p = ask_number("Who won the point: ")
-                            if p == 1:
-                                score[p-1][0] += 1
-                                print(tenis_expressions(score,sets)," for ",short_abbreviation[p-1],"\n")
-                            elif p == 2:
-                                score[p-1][0] += 1
-                                print(tenis_expressions(score,sets)," for ",short_abbreviation[p-1],"\n")
+                            action = ask_number("Who won the point: ")
+                            if action == 1:
+                                score[action-1][0] += 1
+                                print(tenis_expressions(score,sets)," for ",short_abbreviation[action-1],"\n")
+                            elif action == 2:
+                                score[action-1][0] += 1
+                                print(tenis_expressions(score,sets)," for ",short_abbreviation[action-1],"\n")
                             if score[0][0] == 41 and score[1][0] == 41:
                                 score[0][0] = 40
                                 score[1][0] = 40
                                 tenis_expressions(score,sets)
                             if score[0][0] == 42 or score[1][0] == 42:
-                                score[p-1][1] += 1
+                                score[action-1][1] += 1
                                 score[0][i] = 0
                                 score[1][i] = 0
                                 break
@@ -244,6 +244,7 @@ def tennis(name,short_abbreviation):
             case 4:
                 print("Invalid, try again")
         show_matrix(score,short_abbreviation)
+        print()
 
 def show_matrix(score,short_abbreviation):
     #This function helps me show how the game is going as it is on the Tv
@@ -298,15 +299,15 @@ def tenis_expressions(points,sets):
     #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
     for i in range(len(points)):
         if points[0][0] == 0 and points[1][0] == 0:
-            print(Fore.GREEN + "Love\n")
+            print(Fore.GREEN + "Love")
             break
         elif points[0][0] == 40 and points[1][0] == 40:
-            print(Fore.YELLOW + "Deuce\n")
+            print(Fore.YELLOW + "Deuce")
             break
         elif points[i][0] == 41:
             return(Fore.LIGHTRED_EX + "Advantage")
-        elif points[i][1] == 5:
-            print(Fore.RED + "Game point\n")
+        elif points[i][1] == 5 and points[i][0] == 40:
+            print(Fore.RED + "Game point")
         elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
             print(Fore.RED + "Match point\n")
 
