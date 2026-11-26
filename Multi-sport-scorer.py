@@ -280,7 +280,7 @@ def win(sum_per_player,name):
     elif sum_per_player[0] == sum_per_player[1]:
         return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
     else:
-        return("DNP")
+        return(Fore.MAGENTA + pyfiglet.figlet_format("DNP"))
 
 def abbreviations(name):
     #In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
