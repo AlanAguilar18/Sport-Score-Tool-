@@ -286,9 +286,9 @@ def abbreviations(name):
         if len(parts) > 1:
             short_form = parts[0][0] + parts[1][0:2]
         else:
-            short_form = parts[:3]
+            short_form = parts[0][:3]
         abbreviation.append(short_form.upper())
-    return abbreviation
+    return(abbreviation)
 
 def tenis_expressions(points,sets):
     #In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
