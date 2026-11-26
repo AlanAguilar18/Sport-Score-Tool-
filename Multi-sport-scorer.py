@@ -31,9 +31,9 @@ def save(name, sum):
 
 def read_or_clear():
     #It prints the results saved in the results file given by the save function.
-    option = ask_number("Choose an option: ")
     print("1. Read")
     print("2. Clear")
+    option = ask_number("Choose an option: ")
     match option:
         case 1:
             try:
