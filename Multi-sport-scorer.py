@@ -109,7 +109,7 @@ def basketball(name,short_abbreviation):
             print("4 → Next quarter\n")
             print("Q1| Q2| Q3| Q4|")
             show_matrix(score,short_abbreviation)
-            point = ask_number("¿Who won the point? ")
+            point = ask_number("¿Who did the point? ")
             match point:
                 case 1 | 2:
                     options_basketball()
@@ -120,7 +120,7 @@ def basketball(name,short_abbreviation):
                         case 2:
                             score[point-1][i] += 3
                         case 3:
-                            first_foul = ask_number("First shoot\n1 → in\n2 → out ")
+                            first_foul = ask_number("First shoot\n1 → in\n2 → out\nChoose: ")
                             match first_foul:
                                 case 1:
                                     score[point-1][i] += 1
@@ -128,7 +128,7 @@ def basketball(name,short_abbreviation):
                                     print("Next time")
                                 case _:
                                     print("Invalid")
-                            second_foul = ask_number("Second shoot\n1 → in\n 2 → out ")
+                            second_foul = ask_number("Second shoot\n1 → in\n2 → out\nChoose: ")
                             match second_foul:
                                 case 1:
                                     score[point-1][i] += 1
