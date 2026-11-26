@@ -322,7 +322,7 @@ def main():
     #Ask for the players and show the main menu that organises all the games until the user ends it.
     name = names()
     short_abbreviation = abbreviations(name)
-    print(Style.BRIGHT + f"{short_abbreviation[0]} vs {short_abbreviation[1]}" + Style.RESET_ALL)
+    print(Style.BRIGHT + f"{short_abbreviation[0]} vs {short_abbreviation[1]}" + Style.RESET_ALL +"\n")
     while True:
         menu()
         option = ask_number("Choose: ")
