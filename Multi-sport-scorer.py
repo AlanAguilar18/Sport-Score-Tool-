@@ -108,9 +108,9 @@ def basketball(name,short_abbreviation):
     while i < 4:
         while True:
             options(name)
-            print("4 → Next quarter")
-            print(" Q1|Q2|Q3|Q4")
-            print_progress(score,short_abbreviation)
+            print("4 → Next quarter\n")
+            print("Q1| Q2| Q3| Q4|")
+            show_matrix(score,short_abbreviation)
             point = ask_number("¿Who won the point? ")
             match point:
                 case 1 | 2:
@@ -130,8 +130,8 @@ def basketball(name,short_abbreviation):
                                     print("Next time")
                                 case _:
                                     print("Invalid")
-                            foul2 = ask_number("Second shoot\n1 → in\n 2 → out ")
-                            match foul2:
+                            second_foul = ask_number("Second shoot\n1 → in\n 2 → out ")
+                            match second_foul:
                                 case 1:
                                     score[point-1][i] += 1
                                 case 2:
@@ -142,15 +142,15 @@ def basketball(name,short_abbreviation):
                             print("Invalid")
                 case 3:
                     print(" Q1|Q2|Q3|Q4")
-                    print_progress(score,short_abbreviation)
-                    print_progress(sum(score),short_abbreviation)
+                    show_matrix(score,short_abbreviation)
+                    show_matrix(sum(score),short_abbreviation)
                     return win(sum(score),name)
                 case 4:
                     i += 1
                     if i == 4:
                         print(" Q1|Q2|Q3|Q4")
-                        print_progress(score,short_abbreviation)
-                        print_progress(sum(score),short_abbreviation)
+                        show_matrix(score,short_abbreviation)
+                        show_matrix(sum(score),short_abbreviation)
                         return win(sum(score),name)
                 case _:
                     print("Invalid, try again")
@@ -165,22 +165,22 @@ def soccer(name,short_abbreviation):
     while i < 2:
         while True:
             options(name)
-            print("4 → Half time")
+            print("4 → Half time\n")
             who = ask_number("Which team scored: ")
             match who:
                 case 1 | 2:
                     score[who-1][i] +=1
                 case 3:
-                    print_progress(sum(score),short_abbreviation)
+                    show_matrix(sum(score),short_abbreviation)
                     return(win(sum(score),name))
                 case 4:
                     i += 1
                     if i == 2:
-                        print_progress(sum(score),short_abbreviation)
+                        show_matrix(sum(score),short_abbreviation)
                         return(win(sum(score),name))
                 case _:
                     print("Invalid")
-            print_progress(score,short_abbreviation)
+            show_matrix(score,short_abbreviation)
 
 def tennis(name,short_abbreviation):
     #Keep the score of a tennis match until a player wins it by the sets the player decides.
@@ -209,7 +209,7 @@ def tennis(name,short_abbreviation):
                     score[point-1][i] -= 5
                     if score[0][i] == 40 and score[1][i] == 40:
                         print(tenis_expressions(score,sets))
-                        print_progress(score,short_abbreviation)                      
+                        show_matrix(score,short_abbreviation)            
                         while score[0][i] != 42 and score[1][i] != 42:
                             p = int(input("Who won the point: "))
                             if p == 1:
@@ -245,12 +245,14 @@ def tennis(name,short_abbreviation):
                 break
             case 4:
                 print("Invalid, try again")
-        print_progress(score,short_abbreviation)
+        show_matrix(score,short_abbreviation)
 
-def print_progress(score,short_abbreviation):
+def show_matrix(score,short_abbreviation):
     #This function helps me show how the game is going as it is on the Tv
-    print(f"{score[0]}: {short_abbreviation[0]}")
-    print(f"{score[1]}: {short_abbreviation[1]}\n")
+    for i in range(len(score)):
+        for j in range(len(score[i])):
+            print(f"{score[i][j]}", end=" | ")
+        print(short_abbreviation[i])
 
 def names():
     #Ask for the names of the two players/teams and return them in a list.
