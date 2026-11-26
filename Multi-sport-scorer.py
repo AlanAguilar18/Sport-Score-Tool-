@@ -138,16 +138,16 @@ def basketball(name,short_abbreviation):
                         case _:
                             print("Invalid")
                 case 3:
-                    print(" Q1|Q2|Q3|Q4")
+                    print("Q1| Q2| Q3| Q4|")
                     show_matrix(score,short_abbreviation)
-                    show_matrix(sum(score),short_abbreviation)
+                    show_total(sum(score),short_abbreviation)
                     return win(sum(score),name)
                 case 4:
                     i += 1
                     if i == 4:
-                        print(" Q1|Q2|Q3|Q4")
+                        print("Q1| Q2| Q3| Q4|")
                         show_matrix(score,short_abbreviation)
-                        show_matrix(sum(score),short_abbreviation)
+                        show_total(sum(score),short_abbreviation)
                         return win(sum(score),name)
                 case _:
                     print("Invalid, try again")
@@ -168,12 +168,12 @@ def soccer(name,short_abbreviation):
                 case 1 | 2:
                     score[who-1][i] +=1
                 case 3:
-                    show_matrix(sum(score),short_abbreviation)
+                    show_total(sum(score),short_abbreviation)
                     return(win(sum(score),name))
                 case 4:
                     i += 1
                     if i == 2:
-                        show_matrix(sum(score),short_abbreviation)
+                        show_total(sum(score),short_abbreviation)
                         return(win(sum(score),name))
                 case _:
                     print("Invalid")
@@ -182,7 +182,7 @@ def soccer(name,short_abbreviation):
 def tennis(name,short_abbreviation):
     #Keep the score of a tennis match until a player wins it by the sets the player decides.
     score = [[0,0,0],
-              [0,0,0]
+             [0,0,0]
               ]
     while True:
         sets = ask_number("Choose between a game of 3 or 5 sets: ")
@@ -208,7 +208,7 @@ def tennis(name,short_abbreviation):
                         print(tenis_expressions(score,sets))
                         show_matrix(score,short_abbreviation)            
                         while score[0][i] != 42 and score[1][i] != 42:
-                            p = int(input("Who won the point: "))
+                            p = ask_number("Who won the point: ")
                             if p == 1:
                                 score[p-1][0] += 1
                                 print(tenis_expressions(score,sets)," for ",short_abbreviation[p-1],"\n")
@@ -250,6 +250,10 @@ def show_matrix(score,short_abbreviation):
         for j in range(len(score[i])):
             print(f"{score[i][j]}", end=" | ")
         print(short_abbreviation[i])
+
+def show_total(total, short_abbreviation):
+    for i in range(len(total)):
+        print(f"Total: {total[i]} | {short_abbreviation[i]}")
 
 def names():
     #Ask for the names of the two players/teams and return them in a list.
