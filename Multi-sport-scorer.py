@@ -233,11 +233,9 @@ def tennis(name,short_abbreviation):
                         score[0][i+1] = 0
                         score[1][i+1] = 0
                         if score[0][2] == sets or score[1][2] == sets:
-                            print(win(sum(score),name))
-                            break
+                            return(win(sum(score),name))
             case 3:
-                print(win(sum(score),name))
-                break
+                return(win(sum(score),name))
             case 4:
                 print("Invalid, try again")
         show_matrix(score,short_abbreviation)
