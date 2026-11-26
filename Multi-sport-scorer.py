@@ -2,8 +2,7 @@
 SPORT SCORER TOOL
 Multi Sport Scorer
 Author: Alan 
-"""
-"""
+
 Context:
 Every sport has a different form to score, so this program solves that by letting the user pick one sport of the options 
 from the menu and loading a function with only that sport’s scoring rules, so it tracks the match correctly without 
@@ -90,7 +89,7 @@ def sum(matrix):
         for j in i:
             total += j
         sum.append(total)
-    return(sum)
+    return sum
 
 def basketball(name, short_abbreviation):
     # Keep the score of a basketball game quarter by quarter played by 2 teams.
@@ -261,7 +260,7 @@ def names():
         else:
             names = names.strip().title()
             name.append(names)
-    return(name)
+    return name
 
 def win(sum_per_player, name):
     # This function helps me simplifying in all the sports on the program to determine who is the winner
@@ -274,8 +273,6 @@ def win(sum_per_player, name):
         return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
         return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
-    else:
-        return(Fore.MAGENTA + pyfiglet.figlet_format("DNP"))
 
 def abbreviations(name):
     # In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
@@ -287,7 +284,7 @@ def abbreviations(name):
         else:
             short_form = parts[0][:3]
         abbreviation.append(short_form.upper())
-    return(abbreviation)
+    return abbreviation
 
 def tenis_expressions(points, sets):
     # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
