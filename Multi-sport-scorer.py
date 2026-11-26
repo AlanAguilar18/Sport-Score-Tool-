@@ -81,7 +81,7 @@ def options_basketball():
     print("Choose an option: ")
     print("1. From the paint → 2 points")
     print("2. From the three point line → 3 points")
-    print("3. Foul → 1 or 2 points")
+    print("3. Foul → 1 or 2 points\n")
 
 def sum(matrix):
     #Thsi function returns a list with the sum of the matrix.
