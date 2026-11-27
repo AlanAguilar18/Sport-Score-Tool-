@@ -26,7 +26,7 @@ This project solves that problem by having you pick a sport first and then loadi
 16. With option 4 the program ends.
 
 ## External-Libraries
-The program uses two external libraries:\n 
+The program uses two external libraries: 
 Colorama: which adds colors to the text in the terminal.
 Pyfiglet: which turns text into big letters. 
 To install them, open a new cmd or terminal and run:
