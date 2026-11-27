@@ -165,9 +165,9 @@ def soccer(name, short_abbreviation):
     Final totals and winner shown when the game ends.
     
     Process:
-    1. Starts a scoreboard with 2 halfs at 0 for each team.
+    1. Starts a scoreboard with 2 halfves at 0 for each team.
     2. Every goal adds 1 to that team in the current half.
-    3. Option 4 goes to the second halfand after the second time the game ends.
+    3. Option 4 goes to the second half and after the second time the game ends.
     4. Option 3 ends the game at any moment.
     5. At the end, it shows the totals and sends them to win.
     """
