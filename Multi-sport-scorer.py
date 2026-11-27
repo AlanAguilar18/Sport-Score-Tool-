@@ -44,7 +44,7 @@ def read_or_clear():
     3. To clear: opens the file in write mode, which leaves it empty.
     4. If the file doesn't exist when reading, it shows the warning instead
        of crashing.
-"""
+    """
     print("1. Read")
     print("2. Clear")
     option = ask_number("Choose an option: ")
@@ -245,11 +245,11 @@ def tenis_expressions(points, sets):
             break
         elif points[i][0] == 41:
             return Fore.LIGHTRED_EX + "Advantage"
+        elif (points[i][0] == 40 and points[i][1] == 5
+              and points[i][2] == sets - 1):
+            print(Fore.RED + "Match point\n")
         elif points[i][1] == 5 and points[i][0] == 40:
             print(Fore.RED + "Game point")
-        elif (points[i][0] == 40 and points[i][1] == 5
-              and points[i][2] == sets - 2):
-            print(Fore.RED + "Match point\n")
 
 
 def tennis(name, short_abbreviation):
@@ -332,7 +332,13 @@ def tennis(name, short_abbreviation):
                         if score[0][2] == sets or score[1][2] == sets:
                             return win(sum(score), name)
             case 3:
-                return win(sum(score), name)
+                if score[0][2] != score[1][2]:
+                    column = 2
+                elif score[0][1] != score[1][1]:
+                    column = 1
+                else:
+                    column = 0
+                return win([score[0][column], score[1][column]], name)
             case 4:
                 print("Invalid, try again")
         show_matrix(score, short_abbreviation)
