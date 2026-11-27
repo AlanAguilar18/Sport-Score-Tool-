@@ -396,7 +396,7 @@ def names():
     # Ask for the names of the two players/teams and return them in a list.
     name = []
     for i in range(2):
-                names = input("Name of player: ").strip()
+        names = input("Name of player: ").strip()
         if len(names) == 0:
             name.append("Player " + str(i+1))
         else:
