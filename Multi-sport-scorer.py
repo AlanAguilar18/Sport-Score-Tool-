@@ -171,7 +171,6 @@ def soccer(name, short_abbreviation):
     4. Option 3 ends the game at any moment.
     5. At the end, it shows the totals and sends them to win.
     """
-    # Keep the score of a soccer game half by half played by 2 teams.
     score = [
         [0,0],
         [0,0]
@@ -232,7 +231,6 @@ def tennis(name, short_abbreviation):
     6 games make a set, and the games go back to 0.
     When a player reaches the sets needed, it calls win.
     """
-    # Keep the score of a tennis match until a player wins it by the sets the player decides.
     score = [[0,0,0],
              [0,0,0]
               ]
