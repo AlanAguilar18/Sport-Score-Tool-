@@ -28,7 +28,7 @@ def save(name, sum):
 
 
 def read_or_clear():
-    # It prints the results saved in the results file given by the save function.
+    # Print or clear the results saved by the save function.
     print("1. Read")
     print("2. Clear")
     option = ask_number("Choose an option: ")
@@ -60,7 +60,7 @@ def ask_number(message):
 
 
 def options_basketball():
-    # It presents the different kinds of basketball actions and their respective points.
+    # Show the kinds of basketball actions and their points.
     print("Choose an option: ")
     print("1. From the paint → 2 points")
     print("2. From the three point line → 3 points")
@@ -134,7 +134,8 @@ def basketball(name, short_abbreviation):
                         case 2:
                             score[point-1][i] += 3
                         case 3:
-                            first_foul = ask_number("First shoot\n1 → in\n2 → out\nChoose: ")
+                            first_foul = ask_number(
+                                "First shoot\n1 → in\n2 → out\nChoose: ")
                             match first_foul:
                                 case 1:
                                     score[point-1][i] += 1
@@ -142,7 +143,8 @@ def basketball(name, short_abbreviation):
                                     print("Next time")
                                 case _:
                                     print("Invalid")
-                            second_foul = ask_number("Second shoot\n1 → in\n2 → out\nChoose: ")
+                            second_foul = ask_number(
+                                "Second shoot\n1 → in\n2 → out\nChoose: ")
                             match second_foul:
                                 case 1:
                                     score[point-1][i] += 1
@@ -198,7 +200,7 @@ def soccer(name, short_abbreviation):
             who = ask_number("Which team scored: ")
             match who:
                 case 1 | 2:
-                    score[who-1][i] +=1
+                    score[who-1][i] += 1
                 case 3:
                     show_total(sum(score), short_abbreviation)
                     return win(sum(score), name)
@@ -213,7 +215,7 @@ def soccer(name, short_abbreviation):
 
 
 def tenis_expressions(points, sets):
-    # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
+    # Print the tennis expressions that match the score.
     for i in range(len(points)):
         if points[0][0] == 0 and points[1][0] == 0:
             print(Fore.GREEN + "Love")
@@ -222,11 +224,12 @@ def tenis_expressions(points, sets):
             print(Fore.YELLOW + "Deuce")
             break
         elif points[i][0] == 41:
-            return(Fore.LIGHTRED_EX + "Advantage")
+            return Fore.LIGHTRED_EX + "Advantage"
         elif points[i][1] == 5 and points[i][0] == 40:
             print(Fore.RED + "Game point")
-        elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
-            print(Fore.RED + "Match point\n")
+        elif (points[i][0] == 40 and points[i][1] == 5
+              and points[i][2] == sets - 2):
+                  print(Fore.RED + "Match point\n")
 
 
 def tennis(name, short_abbreviation):
@@ -241,15 +244,18 @@ def tennis(name, short_abbreviation):
     expressions like Love, Deuce, Advantage, Game point.
     Winner shown when someone gets the sets needed.
     Process:
-    1. Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
+    1. Asks for 3 or 5 sets and works out how many are
+       needed to win (2 or 3).
     2. Every point goes 0 → 15 → 30 → 40 → game.
-    3. If both players reach 40, it enters deuce there the player needs advantage and then one more point to win the game.
+    3. If both players reach 40, it enters deuce there
+       the player needs advantage and then one more point
+       to win the game.
     4. 6 games make a set, and the games go back to 0.
     5. When a player reaches the sets needed, it calls win.
     """
     score = [[0, 0, 0],
-             [0, 0,  0]
-              ]
+             [0, 0, 0]
+             ]
     while True:
         sets = ask_number("Choose between a game of 3 or 5 sets: ")
         if sets != 3 and sets != 5:
@@ -272,15 +278,17 @@ def tennis(name, short_abbreviation):
                     score[point-1][i] -= 5
                     if score[0][i] == 40 and score[1][i] == 40:
                         tenis_expressions(score, sets)
-                        show_matrix(score, short_abbreviation)            
+                        show_matrix(score, short_abbreviation)
                         while score[0][i] != 42 and score[1][i] != 42:
                             action = ask_number("Who won the point: ")
                             if action == 1:
                                 score[action-1][0] += 1
-                                print(tenis_expressions(score,sets)," for ",short_abbreviation[action-1],"\n")
+                                print(tenis_expressions(score, sets), " for ",
+                                      short_abbreviation[action-1], "\n")
                             elif action == 2:
                                 score[action-1][0] += 1
-                                print(tenis_expressions(score,sets)," for ",short_abbreviation[action-1],"\n")
+                                print(tenis_expressions(score, sets), " for ",
+                                      short_abbreviation[action-1], "\n")
                             if score[0][0] == 41 and score[1][0] == 41:
                                 score[0][0] = 40
                                 score[1][0] = 40
@@ -311,18 +319,22 @@ def tennis(name, short_abbreviation):
 
 
 def win(sum_per_player, name):
-    # This function helps me simplifying in all the sports on the program to determine who is the winner
+    # Decide the winner of any sport and save the result.
     results = ["W", "L"]
     if sum_per_player[0] > sum_per_player[1]:
         save(name, results)
-        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[0]}    won\n") 
-               + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[1]}    lost")))
+        return (Fore.LIGHTYELLOW_EX
+                + pyfiglet.figlet_format(f"{name[0]}    won\n")
+                + (Fore.LIGHTRED_EX
+                   + pyfiglet.figlet_format(f"{name[1]}    lost")))
     elif sum_per_player[1] > sum_per_player[0]:
         save(name, results[::-1])
-        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") 
-               + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
+        return (Fore.LIGHTYELLOW_EX
+                + pyfiglet.figlet_format(f"{name[1]}    won\n")
+                + (Fore.LIGHTRED_EX
+                   + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
-        return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
+        return Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE")
 
 
 def welcome(option):
@@ -336,7 +348,7 @@ def welcome(option):
 
 
 def menu():
-    # Prints the main menu with the available options of the different sports and the option to read the last results.
+    # Print the main menu with the sports and the results option.
     print("Choose an option: ")
     print("1. Basketball")
     print("2. Tennis")
@@ -380,10 +392,11 @@ def abbreviations(name):
 
 
 def main():
-    # Ask for the players and show the main menu that organises all the games until the user ends it.
+    # Ask for the players and show the menu until the user ends it.
     name = names()
     short_abbreviation = abbreviations(name)
-    print(Style.BRIGHT + f"{short_abbreviation[0]} vs {short_abbreviation[1]}" + Style.RESET_ALL +"\n")
+    print(Style.BRIGHT + f"{short_abbreviation[0]} vs "
+          f"{short_abbreviation[1]}" + Style.RESET_ALL + "\n")
     while True:
         menu()
         option = ask_number("Choose: ")
@@ -407,5 +420,8 @@ def main():
                     print("Invalid, try again")
         except ValueError:
                 print("Invalid please try again")
+
+
+
 
 main()
