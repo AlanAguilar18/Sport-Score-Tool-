@@ -35,7 +35,7 @@ def read_or_clear():
     Outputs:
     Results on screen: each saved line as "name: result".
     Empty file: results.txt erased and the message "File cleared".
-    Warning: the rpogram prints "The file doesn't exist yet" if there is no
+    Warning: the program prints "The file doesn't exist yet" if there is no
     file to read.
     Process:
     1. Shows the two options and asks for one.
@@ -54,9 +54,10 @@ def read_or_clear():
                 with open("results.txt") as results_file:
                     for i in results_file:
                         parts = i.strip()
-                        parts = parts.split("=")
-                        name, result = parts
-                        print(f"{name}: {result}")
+                        if parts != "":
+                            parts = parts.split("=")
+                            name, result = parts
+                            print(f"{name}: {result}")
             except FileNotFoundError:
                 print("The file doesn't exist yet")
         case 2:
@@ -300,22 +301,23 @@ def tennis(name, short_abbreviation):
                         show_matrix(score, short_abbreviation)
                         while score[0][i] != 42 and score[1][i] != 42:
                             action = ask_number("Who won the point: ")
-                            if action == 1:
+                            if action == 1 or action == 2:
                                 score[action-1][0] += 1
-                                print(tenis_expressions(score, sets), " for ",
-                                      short_abbreviation[action-1], "\n")
-                            elif action == 2:
-                                score[action-1][0] += 1
-                                print(tenis_expressions(score, sets), " for ",
-                                      short_abbreviation[action-1], "\n")
-                            if score[0][0] == 41 and score[1][0] == 41:
-                                score[0][0] = 40
-                                score[1][0] = 40
-                                tenis_expressions(score, sets)
+                                if score[0][0] == 41 and score[1][0] == 41:
+                                    score[0][0] = 40
+                                    score[1][0] = 40
+                                    tenis_expressions(score, sets)
+                                elif score[action-1][0] == 41:
+                                    print(tenis_expressions(score, sets),
+                                          " for ",
+                                          short_abbreviation[action-1], "\n")
+                            else:
+                                print("Invalid, try again")
                             if score[0][0] == 42 or score[1][0] == 42:
-                                score[action-1][1] += 1
                                 score[0][i] = 0
                                 score[1][i] = 0
+                                score[action-1][i] = 60
+                                point = action
                                 break
                 elif score[point-1][i] == 55:
                     score[point-1][i] += 5
