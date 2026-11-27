@@ -22,7 +22,7 @@ This project solves that problem by having you pick a sport first and then loadi
 12. The winner and the loser are shown in big colored letters.
 13. The program saves automatically if each player won (W) or lost (L) in the file results.txt. Ties are not saved.
 14. The program goes back to the main menu, so you can track another match with the same players.
-15.With option 5 you can read all the saved results or clear the file.
+15. With option 5 you can read all the saved results or clear the file.
 16. With option 4 the program ends.
 
 ## External-Libraries
