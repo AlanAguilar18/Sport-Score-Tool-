@@ -1,17 +1,21 @@
 """
 SPORT SCORER TOOL
 Multi Sport Scorer
-Author: Alan 
+Author: Alan
 
 Context:
-Every sport has a different form to score, so this program solves that by letting the user pick one sport of the options 
-from the menu and loading a function with only that sport’s scoring rules, so it tracks the match correctly without 
-the user having to remember them all. Also you can use the option 5 → read/clear where the results are saved automatically and
-it can also clear the document.
+Every sport has a different form to score, so this program
+solves that by letting the user pick one sport of the options
+from the menu and loading a function with only that sport’s
+scoring rules, so it tracks the match correctly without
+the user having to remember them all. Also you can use the
+option 5 → read/clear where the results are saved automatically
+and it can also clear the document.
 """
 from colorama import Fore, Style, init
 import pyfiglet
 init(autoreset=True)
+
 
 def save(name, sum):
     # Save the result (W or L) of each player in the results file.
@@ -21,6 +25,7 @@ def save(name, sum):
             results.write(f"{name[1]}={sum[1]}\n")
     except FileExistsError:
         print("The file does not exist")
+
 
 def read_or_clear():
     # It prints the results saved in the results file given by the save function.
@@ -34,7 +39,7 @@ def read_or_clear():
                     for i in results_file:
                         parts = i.strip()
                         parts = parts.split("=")
-                        name,result = parts
+                        name, result = parts
                         print(f"{name}: {result}")
             except FileNotFoundError:
                 print("The file doesn't exist yet")
@@ -44,13 +49,15 @@ def read_or_clear():
                 pass
     print()
 
+
 def ask_number(message):
     # It helps validating the inputs so it only gives me a number.
     while True:
         try:
-            return(int(input(message)))
+            return int(input(message))
         except ValueError:
             print("Invalid type a number")
+
 
 def options_basketball():
     # It presents the different kinds of basketball actions and their respective points.
@@ -58,6 +65,7 @@ def options_basketball():
     print("1. From the paint → 2 points")
     print("2. From the three point line → 3 points")
     print("3. Foul → 1 or 2 points\n")
+
 
 def sum(matrix):
     # This function returns a list with the sum of the matrix.
@@ -69,6 +77,7 @@ def sum(matrix):
         sum.append(total)
     return sum
 
+
 def show_matrix(score, short_abbreviation):
     # This function helps me show how the game is going as it is on the Tv
     for i in range(len(score)):
@@ -76,9 +85,11 @@ def show_matrix(score, short_abbreviation):
             print(f"{score[i][j]}", end=" | ")
         print(short_abbreviation[i])
 
+
 def show_total(total, short_abbreviation):
     for i in range(len(total)):
         print(f"Total: {total[i]} | {short_abbreviation[i]}")
+
 
 def basketball(name, short_abbreviation):
     """
@@ -88,22 +99,22 @@ def basketball(name, short_abbreviation):
     Kind of shot between paint, three-pointer or foul.
     Free throws in or out, for each of the two shots of a foul.
     Outputs:
-    Scoreboard on screen points of each team per quarter from 
-    Q1 to Q4, after every play. Final totals and winner shown 
+    Scoreboard on screen points of each team per quarter from
+    Q1 to Q4, after every play. Final totals and winner shown
     when the game ends.
     Process:
     1. Starts a scoreboard with 4 quarters at 0 for each team.
-    2. Asks who scored and what kind of shot it was, and adds 2, 
+    2. Asks who scored and what kind of shot it was, and adds 2,
        3, or 1 per free throw that goes in.
-    3. Option 4 moves to the next quarter and after the 4th 
+    3. Option 4 moves to the next quarter and after the 4th
        quarter the game ends.
     4. Option 3 ends the game at any moment of the match.
-    5. At the end, it shows the totals and sends them to win to 
+    5. At the end, it shows the totals and sends them to win to
        know who won.
     """
     score = [
-        [0,0,0,0],
-        [0,0,0,0]
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
         ]
     i = 0
     while i < 4:
@@ -156,27 +167,28 @@ def basketball(name, short_abbreviation):
                 case _:
                     print("Invalid, try again")
 
+
 def soccer(name, short_abbreviation):
     """
     Inputs:
     Names and abbreviations of both teams.
-    Who scored 1 or 2, or 3 to end and 4 
+    Who scored 1 or 2, or 3 to end and 4
     for half time.
     Outputs:
-    Scoreboard on screen goals of each team 
+    Scoreboard on screen goals of each team
     in the first and second half, after every goal.
     Final totals and winner shown when the game ends.
     Process:
-    1. Starts a scoreboard with 2 halfves at 0 for each team.
+    1. Starts a scoreboard with 2 halves at 0 for each team.
     2. Every goal adds 1 to that team in the current half.
-    3. Option 4 goes to the second half and after the second 
+    3. Option 4 goes to the second half and after the second
        time the game ends.
     4. Option 3 ends the game at any moment.
     5. At the end, it shows the totals and sends them to win.
     """
     score = [
-        [0,0],
-        [0,0]
+        [0, 0],
+        [0, 0]
         ]
     i = 0
     while i < 2:
@@ -189,15 +201,16 @@ def soccer(name, short_abbreviation):
                     score[who-1][i] +=1
                 case 3:
                     show_total(sum(score), short_abbreviation)
-                    return(win(sum(score), name))
+                    return win(sum(score), name)
                 case 4:
                     i += 1
                     if i == 2:
                         show_total(sum(score), short_abbreviation)
-                        return(win(sum(score), name))
+                        return win(sum(score), name)
                 case _:
                     print("Invalid")
             show_matrix(score, short_abbreviation)
+
 
 def tenis_expressions(points, sets):
     # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
@@ -215,6 +228,7 @@ def tenis_expressions(points, sets):
         elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
             print(Fore.RED + "Match point\n")
 
+
 def tennis(name, short_abbreviation):
     """
     Inputs:
@@ -223,7 +237,7 @@ def tennis(name, short_abbreviation):
     Who won each point 1 or 2, or 3 to end.
     Outputs:
     Scoreboard on screen points | games | sets
-    of each player, after every point. Tennis 
+    of each player, after every point. Tennis
     expressions like Love, Deuce, Advantage, Game point.
     Winner shown when someone gets the sets needed.
     Process:
@@ -233,8 +247,8 @@ def tennis(name, short_abbreviation):
     4. 6 games make a set, and the games go back to 0.
     5. When a player reaches the sets needed, it calls win.
     """
-    score = [[0,0,0],
-             [0,0,0]
+    score = [[0, 0, 0],
+             [0, 0,  0]
               ]
     while True:
         sets = ask_number("Choose between a game of 3 or 5 sets: ")
@@ -287,25 +301,29 @@ def tennis(name, short_abbreviation):
                         score[0][i+1] = 0
                         score[1][i+1] = 0
                         if score[0][2] == sets or score[1][2] == sets:
-                            return(win(sum(score), name))
+                            return win(sum(score), name)
             case 3:
-                return(win(sum(score), name))
+                return win(sum(score), name)
             case 4:
                 print("Invalid, try again")
         show_matrix(score, short_abbreviation)
         print()
 
+
 def win(sum_per_player, name):
     # This function helps me simplifying in all the sports on the program to determine who is the winner
-    w = ["W","L"]
+    results = ["W", "L"]
     if sum_per_player[0] > sum_per_player[1]:
-        save(name, w)
-        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[0]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[1]}    lost")))
+        save(name, results)
+        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[0]}    won\n") 
+               + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[1]}    lost")))
     elif sum_per_player[1] > sum_per_player[0]:
-        save(name, w[::-1])
-        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
+        save(name, results[::-1])
+        return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") 
+               + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
         return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
+
 
 def welcome(option):
     match option:
@@ -316,6 +334,7 @@ def welcome(option):
         case 3:
             print(Fore.WHITE + "Soccer")
 
+
 def menu():
     # Prints the main menu with the available options of the different sports and the option to read the last results.
     print("Choose an option: ")
@@ -324,6 +343,7 @@ def menu():
     print("3. Soccer")
     print("4. End")
     print("5. Read or Clear")
+
 
 def names():
     # Ask for the names of the two players/teams and return them in a list.
@@ -337,6 +357,7 @@ def names():
             name.append(names)
     return name
 
+
 def options(name):
     # This one prints the options to choose a player/team or end the game.
     print("Choose an option: ")
@@ -344,8 +365,9 @@ def options(name):
     print(f"2 → {name[1]}")
     print("3 → End")
 
+
 def abbreviations(name):
-    # In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
+    # Abbreviations instead of the complete name.
     abbreviation = []
     for words in name:
         parts = words.split()
@@ -355,6 +377,7 @@ def abbreviations(name):
             short_form = parts[0][:3]
         abbreviation.append(short_form.upper())
     return abbreviation
+
 
 def main():
     # Ask for the players and show the main menu that organises all the games until the user ends it.
