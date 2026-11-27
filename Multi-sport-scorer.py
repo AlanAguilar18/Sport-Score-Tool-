@@ -1,7 +1,7 @@
 """
 SPORT SCORER TOOL
 Multi Sport Scorer
-Author: Alan
+Author: Alan Aguilar
 
 Context:
 Every sport has a different form to score, so this program
