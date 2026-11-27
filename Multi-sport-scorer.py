@@ -47,6 +47,8 @@ def read_or_clear():
             print("File cleared\n")
             with open("results.txt", "w"):
                 pass
+        case _:
+            print("Invalid")
     print()
 
 
@@ -87,6 +89,7 @@ def show_matrix(score, short_abbreviation):
 
 
 def show_total(total, short_abbreviation):
+    # Print the total points of each player with its abbreviation.
     for i in range(len(total)):
         print(f"Total: {total[i]} | {short_abbreviation[i]}")
 
@@ -229,7 +232,7 @@ def tenis_expressions(points, sets):
             print(Fore.RED + "Game point")
         elif (points[i][0] == 40 and points[i][1] == 5
               and points[i][2] == sets - 2):
-                  print(Fore.RED + "Match point\n")
+            print(Fore.RED + "Match point\n")
 
 
 def tennis(name, short_abbreviation):
@@ -248,7 +251,7 @@ def tennis(name, short_abbreviation):
        needed to win (2 or 3).
     2. Every point goes 0 → 15 → 30 → 40 → game.
     3. If both players reach 40, it enters deuce there
-       the player needs advantage and then one more point
+       the player needs an advantage and then one more point
        to win the game.
     4. 6 games make a set, and the games go back to 0.
     5. When a player reaches the sets needed, it calls win.
@@ -338,6 +341,7 @@ def win(sum_per_player, name):
 
 
 def welcome(option):
+    # Print the name of the chosen sport in its color.
     match option:
         case 1:
             print(Fore.RED + "Basketball")
@@ -361,11 +365,11 @@ def names():
     # Ask for the names of the two players/teams and return them in a list.
     name = []
     for i in range(2):
-        names = input("Name of player: ")
+                names = input("Name of player: ").strip()
         if len(names) == 0:
             name.append("Player " + str(i+1))
         else:
-            names = names.strip().title()
+            name.append(names.title())
             name.append(names)
     return name
 
@@ -419,9 +423,7 @@ def main():
                 case _:
                     print("Invalid, try again")
         except ValueError:
-                print("Invalid please try again")
-
-
+            print("Invalid please try again")
 
 
 main()
