@@ -225,11 +225,11 @@ def tennis(name, short_abbreviation):
     Winner shown when someone wins the sets needed.
     
     Process:
-    Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
-    Every point goes 0 → 15 → 30 → 40 → game.
-    If both players reach 40, it enters deuce there the player needs advantage and then one more point to win the game.
-    6 games make a set, and the games go back to 0.
-    When a player reaches the sets needed, it calls win.
+    1. Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
+    2. Every point goes 0 → 15 → 30 → 40 → game.
+    3. If both players reach 40, it enters deuce there the player needs advantage and then one more point to win the game.
+    4. 6 games make a set, and the games go back to 0.
+    5. When a player reaches the sets needed, it calls win.
     """
     score = [[0,0,0],
              [0,0,0]
