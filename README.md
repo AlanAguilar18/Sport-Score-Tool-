@@ -1,34 +1,37 @@
 # Sport-Score-Tool
 
 Context:
-Every sport keeps a form to score in different ways, in soccer is a very simple way as the team who wins is the one with more goals. Tennis uses a structure of points, games, and sets, with special rules like deuce and advantage. Volleyball uses rally scoring with a win by two rule and a different point target for the deciding set. American football awards different point values depending on how a team scores like touchdown, extra point, field goal, safety. Golf does not count who has more points, it counts strokes, and fewer is better.
+Every sport keeps score in a different way. In soccer it is very simple: the team with more goals wins. Basketball gives a different number of points depending on the kind of shot, and it is played in four quarters. Tennis uses a structure of points, games and sets, with special rules like deuce and advantage.
 
-Because of this, there is no single scoreboard that works for every sport. Someone has to learn a new set of rules for every sport they want to support, so this makes the problem more interesting as the process of scoring is always the same, but the rules change completely from sport to sport. This situation makes it frustrating as someone who plays different kind of sports every day sometimes I get confused by the specific rules of each sport so  this program will help me every day.
+Because of this, there is no single scoreboard that works for every sport. Someone has to learn a new set of rules for every sport they want to follow. This makes the problem interesting, because the process of scoring is always the same, but the rules change completely from sport to sport. As someone who plays different kinds of sports every day, I sometimes get confused by the specific rules of each one, so this program helps me every day.
 
-This project aims to solve the problem that there is no single set of rules that works for every sport at scoring, so my program solves this by having you pick a sport first, then loading a function that contains only the scoring rules that belong to that sport, so the same program can correctly keep track of a match no matter which of the seven sports (tennis, american football, soccer, basketball, volleyball, ping pong and golf) you are playing, without you having to remember every of the sport rules yourself.
+This project solves that problem by having you pick a sport first and then loading a function that contains only the scoring rules of that sport. This way the same program can keep track of a match in any of its three sports (basketball, tennis and soccer) without you having to remember every rule yourself. The results are saved automatically, and you can read them or clear them directly from the main menu.
 
 ## Algorithm
-1. You pick a sport, tennis, american football, soccer, basketball, volleyball, ping pong or golf
-2. It gives you to register you or your team in the data base for future matches
-3. The program loads the scoring rules that belong to that sport
-4. It can also count the fouls during the game such as a yellow card in soccer
-5. The score starts at zero for both sides
-6. You wait for a scoring action to happen during the match
-7. You record what type of action it was
-8. The program adds the value that action is worth
-9. In tennis the points move in order 0, 15, 30, 45, game, with a deuce and advantage rule if both players reach 45
-10. In american football a touchdown is worth 6, an extra point 1, a two-point conversion 2, a field goal 3, and a safety 2
-11. In soccer a goal is worth 1
-12. In basketball a shot is worth 2, or 3 if it’s from beyond the arc, and a free throw is worth 1
-13. In volleyball and ping pong every rally won is worth 1 point
-14. In golf instead of adding points, you record the number of strokes it took to finish the hole
-15. In tennis, the one who wins is the player that won enough sets
-16. In american football, basketball, soccer the one who wins is who has the most points
-17. In volleyball and ping pong a side reached the point target with a 2-point lead and won enough sets or games
-18. In golf all the holes have been played
-19. Then the program compares the final score, or in golf the total strokes
-20. IF they have the same number of points it’s called a tie 
-21. The winner is the side with more points, except in golf where it’s the side with fewer strokes
-22. You’re asked if you want to track another match
-23. If you do the the program goes back to picking a sport
-24. The program register if you won or losed
+1. You type the names of the two players or teams. If you leave a name empty, the program uses "Player 1" or "Player 2".
+2. The program makes a short abbreviation for each name, like on a TV scoreboard, and shows the match for example ALA vs MAN (Alan/Manuel).
+3. The main menu appears: 1. Basketball, 2. Tennis, 3. Soccer, 4. End, 5. Read or Clear.
+4. When you pick a sport, the program loads the function with the scoring rules of that sport, and the score starts at zero for both sides.
+5. You wait for a scoring action to happen and record who scored. You can choose "End" at any moment to finish the game early.
+6. In basketball you also record the kind of action: a shot from the paint is worth 2, a three-pointer is worth 3, and a foul gives two free throws worth 1 each if they go in. The game is played in 4 quarters.
+7. In tennis you first choose a match of 3 or 5 sets. Points move in order 0, 15, 30, 40, game, with deuce and advantage if both players reach 40. 6 games make a set, and the program shows expressions like Love, Deuce, Advantage and Game point.
+8. In soccer every goal is worth 1, and the game is played in two halves.
+9. After every action the program shows the scoreboard.
+10. In basketball and soccer the game ends after the last quarter or half. In tennis it ends when a player wins enough sets (2 of 3, or 3 of 5).
+11. The program compares the final score. The side with more points wins, and if both have the same points it is a tie.
+12. The winner and the loser are shown in big colored letters.
+13. The program saves automatically if each player won (W) or lost (L) in the file results.txt. Ties are not saved.
+14. The program goes back to the main menu, so you can track another match with the same players.
+15.With option 5 you can read all the saved results or clear the file.
+16. With option 4 the program ends.
+
+## External-Libraries
+The program uses two external libraries: 
+Colorama: which adds colors to the text in the terminal.
+Pyfiglet: which turns text into big letters. 
+To install them, open a new cmd or terminal and run:
+
+python -m pip install colorama
+python -m pip install pyfiglet
+
+If you have an error that the library is not found then check that VS Code is using the same Python interpreter where you installed it so use Ctrl + Shift + P then select "Python: Select Interpreter". After installing, you can also reload VS Code with Ctrl + Shift + P then search for "Developer: Reload Window".
