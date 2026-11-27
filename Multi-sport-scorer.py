@@ -28,7 +28,23 @@ def save(name, sum):
 
 
 def read_or_clear():
-    # Print or clear the results saved by the save function.
+    """
+    Inputs:
+    Option chosen: 1 to read or 2 to clear, typed by the user.
+    Results file: results.txt, with the games saved before.
+    Outputs:
+    Results on screen: each saved line as "name: result".
+    Empty file: results.txt erased and the message "File cleared".
+    Warning: the rpogram prints "The file doesn't exist yet" if there is no 
+    file to read.
+    Process:
+    1. Shows the two options and asks for one.
+    2. To read: opens the file, goes line by line, separates the name from the
+    result at the "=" and prints them.
+    3. To clear: opens the file in write mode, which leaves it empty.
+    4. If the file doesn't exist when reading, it shows the warning instead
+       of crashing.
+"""
     print("1. Read")
     print("2. Clear")
     option = ask_number("Choose an option: ")
@@ -322,7 +338,22 @@ def tennis(name, short_abbreviation):
 
 
 def win(sum_per_player, name):
-    # Decide the winner of any sport and save the result.
+    """
+    Inputs:
+    Totals: the final points of each player or team.
+    List of names: the two players or teams.
+    Outputs:
+    Big text on screen: "won" with the winner's name in yellow and "lost"
+    with the loser's name in red, or "TIE" in cyan.
+    Saved result: W and L written in results.txt.
+    Process:
+    1. Compares the two totals.
+    2. If the first one is bigger, player 1 wins: saves W and L and builds
+    the big text.
+    3. If the second one is bigger, player 2 wins: saves the results in the
+    opposite order like L and W.
+    4. If they are equal, it's a tie and nothing is saved.
+    """
     results = ["W", "L"]
     if sum_per_player[0] > sum_per_player[1]:
         save(name, results)
