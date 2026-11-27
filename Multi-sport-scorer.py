@@ -44,15 +44,6 @@ def read_or_clear():
                 pass
     print()
 
-def menu():
-    # Prints the main menu with the available options of the different sports and the option to read the last results.
-    print("Choose an option: ")
-    print("1. Basketball")
-    print("2. Tennis")
-    print("3. Soccer")
-    print("4. End")
-    print("5. Read or Clear")
-
 def ask_number(message):
     # It helps validating the inputs so it only gives me a number.
     while True:
@@ -60,13 +51,6 @@ def ask_number(message):
             return(int(input(message)))
         except ValueError:
             print("Invalid type a number")
-
-def options(name):
-    # This one prints the options to choose a player/team or end the game.
-    print("Choose an option: ")
-    print(f"1 → {name[0]}")
-    print(f"2 → {name[1]}")
-    print("3 → End")
 
 def options_basketball():
     # It presents the different kinds of basketball actions and their respective points.
@@ -264,18 +248,6 @@ def show_total(total, short_abbreviation):
     for i in range(len(total)):
         print(f"Total: {total[i]} | {short_abbreviation[i]}")
 
-def names():
-    # Ask for the names of the two players/teams and return them in a list.
-    name = []
-    for i in range(2):
-        names = input("Name of player: ")
-        if len(names) == 0:
-            name.append("Player " + str(i+1))
-        else:
-            names = names.strip().title()
-            name.append(names)
-    return name
-
 def win(sum_per_player, name):
     # This function helps me simplifying in all the sports on the program to determine who is the winner
     w = ["W","L"]
@@ -287,18 +259,6 @@ def win(sum_per_player, name):
         return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
         return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
-
-def abbreviations(name):
-    # In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
-    abbreviation = []
-    for words in name:
-        parts = words.split()
-        if len(parts) > 1:
-            short_form = parts[0][0] + parts[1][0:2]
-        else:
-            short_form = parts[0][:3]
-        abbreviation.append(short_form.upper())
-    return abbreviation
 
 def tenis_expressions(points, sets):
     # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
@@ -324,6 +284,46 @@ def welcome(option):
             print(Fore.GREEN + "Tennis")
         case 3:
             print(Fore.WHITE + "Soccer")
+
+def menu():
+    # Prints the main menu with the available options of the different sports and the option to read the last results.
+    print("Choose an option: ")
+    print("1. Basketball")
+    print("2. Tennis")
+    print("3. Soccer")
+    print("4. End")
+    print("5. Read or Clear")
+
+def names():
+    # Ask for the names of the two players/teams and return them in a list.
+    name = []
+    for i in range(2):
+        names = input("Name of player: ")
+        if len(names) == 0:
+            name.append("Player " + str(i+1))
+        else:
+            names = names.strip().title()
+            name.append(names)
+    return name
+
+def options(name):
+    # This one prints the options to choose a player/team or end the game.
+    print("Choose an option: ")
+    print(f"1 → {name[0]}")
+    print(f"2 → {name[1]}")
+    print("3 → End")
+
+def abbreviations(name):
+    # In many sports mainly in soccer the use abbreviations instead of the complete name of the team as the scores boards are tiny in comparison to the ones in basketball
+    abbreviation = []
+    for words in name:
+        parts = words.split()
+        if len(parts) > 1:
+            short_form = parts[0][0] + parts[1][0:2]
+        else:
+            short_form = parts[0][:3]
+        abbreviation.append(short_form.upper())
+    return abbreviation
 
 def main():
     # Ask for the players and show the main menu that organises all the games until the user ends it.
