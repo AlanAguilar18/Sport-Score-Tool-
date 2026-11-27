@@ -401,7 +401,6 @@ def names():
             name.append("Player " + str(i+1))
         else:
             name.append(names.title())
-            name.append(names)
     return name
 
 
