@@ -60,10 +60,6 @@ def options_basketball():
     print("3. Foul → 1 or 2 points\n")
 
 def sum(matrix):
-    """
-
-
-    """
     # This function returns a list with the sum of the matrix.
     sum = []
     for i in matrix:
@@ -73,12 +69,36 @@ def sum(matrix):
         sum.append(total)
     return sum
 
+def show_matrix(score, short_abbreviation):
+    # This function helps me show how the game is going as it is on the Tv
+    for i in range(len(score)):
+        for j in range(len(score[i])):
+            print(f"{score[i][j]}", end=" | ")
+        print(short_abbreviation[i])
+
+def show_total(total, short_abbreviation):
+    for i in range(len(total)):
+        print(f"Total: {total[i]} | {short_abbreviation[i]}")
+
 def basketball(name, short_abbreviation):
     """
-
-
+    Inputs:
+    Names and abbreviations of both teams.
+    Who scored 1 or 2, or 3 to end and 4 for the next quarter.
+    Kind of shot between paint, three-pointer or foul.
+    Free throws in or out, for each of the two shots of a foul.
+    
+    Outputs:
+    Scoreboard on screen points of each team per quarter from Q1 to Q4, after every play.
+    Final totals and winner shown when the game ends.
+    
+    Process:
+    1. Starts a scoreboard with 4 quarters at 0 for each team.
+    2. Asks who scored and what kind of shot it was, and adds 2, 3, or 1 per free throw that goes in.
+    3. Option 4 moves to the next quarter and after the 4th quarter the game ends.
+    4. Option 3 ends the game at any moment of the match.
+    5. At the end, it shows the totals and sends them to win to know who won.
     """
-    # Keep the score of a basketball game quarter by quarter played by 2 teams.
     score = [
         [0,0,0,0],
         [0,0,0,0]
@@ -136,8 +156,20 @@ def basketball(name, short_abbreviation):
 
 def soccer(name, short_abbreviation):
     """
-
-
+    Inputs:
+    Names and abbreviations of both teams.
+    Who scored 1 or 2, or 3 to end and 4 for half time.
+    
+    Outputs:
+    Scoreboard on screen goals of each team in the first and second half, after every goal.
+    Final totals and winner shown when the game ends.
+    
+    Process:
+    1. Starts a scoreboard with 2 halfs at 0 for each team.
+    2. Every goal adds 1 to that team in the current half.
+    3. Option 4 goes to the second halfand after the second time the game ends.
+    4. Option 3 ends the game at any moment.
+    5. At the end, it shows the totals and sends them to win.
     """
     # Keep the score of a soccer game half by half played by 2 teams.
     score = [
@@ -165,10 +197,40 @@ def soccer(name, short_abbreviation):
                     print("Invalid")
             show_matrix(score, short_abbreviation)
 
+def tenis_expressions(points, sets):
+    # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
+    for i in range(len(points)):
+        if points[0][0] == 0 and points[1][0] == 0:
+            print(Fore.GREEN + "Love")
+            break
+        elif points[0][0] == 40 and points[1][0] == 40:
+            print(Fore.YELLOW + "Deuce")
+            break
+        elif points[i][0] == 41:
+            return(Fore.LIGHTRED_EX + "Advantage")
+        elif points[i][1] == 5 and points[i][0] == 40:
+            print(Fore.RED + "Game point")
+        elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
+            print(Fore.RED + "Match point\n")
+
 def tennis(name, short_abbreviation):
     """
-
-
+    Inputs:
+    Names and abbreviations of both players.
+    Length of the match 3 or 5 sets.
+    Who won each point 1 or 2, or 3 to end.
+    
+    Outputs:
+    Scoreboard on screen points | games | sets of each player, after every point.
+    Tennis expressions Love, Deuce, Advantage, Game point.
+    Winner shown when someone wins the sets needed.
+    
+    Process:
+    Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
+    Every point goes 0 → 15 → 30 → 40 → game.
+    If both players reach 40, it enters deuce there the player needs advantage and then one more point to win the game.
+    6 games make a set, and the games go back to 0.
+    When a player reaches the sets needed, it calls win.
     """
     # Keep the score of a tennis match until a player wins it by the sets the player decides.
     score = [[0,0,0],
@@ -233,21 +295,6 @@ def tennis(name, short_abbreviation):
         show_matrix(score, short_abbreviation)
         print()
 
-def show_matrix(score, short_abbreviation):
-    """
-
-
-    """
-    # This function helps me show how the game is going as it is on the Tv
-    for i in range(len(score)):
-        for j in range(len(score[i])):
-            print(f"{score[i][j]}", end=" | ")
-        print(short_abbreviation[i])
-
-def show_total(total, short_abbreviation):
-    for i in range(len(total)):
-        print(f"Total: {total[i]} | {short_abbreviation[i]}")
-
 def win(sum_per_player, name):
     # This function helps me simplifying in all the sports on the program to determine who is the winner
     w = ["W","L"]
@@ -259,22 +306,6 @@ def win(sum_per_player, name):
         return(Fore.LIGHTYELLOW_EX + pyfiglet.figlet_format(f"{name[1]}    won\n") + (Fore.LIGHTRED_EX + pyfiglet.figlet_format(f"{name[0]}    lost")))
     elif sum_per_player[0] == sum_per_player[1]:
         return(Fore.LIGHTCYAN_EX + pyfiglet.figlet_format("TIE"))
-
-def tenis_expressions(points, sets):
-    # In tenis we have different expressions depending the score so this helps me saving them an using them on the tenis game
-    for i in range(len(points)):
-        if points[0][0] == 0 and points[1][0] == 0:
-            print(Fore.GREEN + "Love")
-            break
-        elif points[0][0] == 40 and points[1][0] == 40:
-            print(Fore.YELLOW + "Deuce")
-            break
-        elif points[i][0] == 41:
-            return(Fore.LIGHTRED_EX + "Advantage")
-        elif points[i][1] == 5 and points[i][0] == 40:
-            print(Fore.RED + "Game point")
-        elif points[i][0] == 40 and points[i][1] == 5 and points[i][2] == sets - 2:
-            print(Fore.RED + "Match point\n")
 
 def welcome(option):
     match option:
