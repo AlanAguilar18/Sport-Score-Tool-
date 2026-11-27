@@ -89,15 +89,19 @@ def basketball(name, short_abbreviation):
     Free throws in or out, for each of the two shots of a foul.
     
     Outputs:
-    Scoreboard on screen points of each team per quarter from Q1 to Q4, after every play.
-    Final totals and winner shown when the game ends.
+    Scoreboard on screen points of each team per quarter from 
+    Q1 to Q4, after every play. Final totals and winner shown 
+    when the game ends.
     
     Process:
     1. Starts a scoreboard with 4 quarters at 0 for each team.
-    2. Asks who scored and what kind of shot it was, and adds 2, 3, or 1 per free throw that goes in.
-    3. Option 4 moves to the next quarter and after the 4th quarter the game ends.
+    2. Asks who scored and what kind of shot it was, and adds 2, 
+       3, or 1 per free throw that goes in.
+    3. Option 4 moves to the next quarter and after the 4th 
+       quarter the game ends.
     4. Option 3 ends the game at any moment of the match.
-    5. At the end, it shows the totals and sends them to win to know who won.
+    5. At the end, it shows the totals and sends them to win to 
+       know who won.
     """
     score = [
         [0,0,0,0],
@@ -158,16 +162,19 @@ def soccer(name, short_abbreviation):
     """
     Inputs:
     Names and abbreviations of both teams.
-    Who scored 1 or 2, or 3 to end and 4 for half time.
+    Who scored 1 or 2, or 3 to end and 4 
+    for half time.
     
     Outputs:
-    Scoreboard on screen goals of each team in the first and second half, after every goal.
+    Scoreboard on screen goals of each team 
+    in the first and second half, after every goal.
     Final totals and winner shown when the game ends.
     
     Process:
     1. Starts a scoreboard with 2 halfves at 0 for each team.
     2. Every goal adds 1 to that team in the current half.
-    3. Option 4 goes to the second half and after the second time the game ends.
+    3. Option 4 goes to the second half and after the second 
+       time the game ends.
     4. Option 3 ends the game at any moment.
     5. At the end, it shows the totals and sends them to win.
     """
@@ -220,9 +227,10 @@ def tennis(name, short_abbreviation):
     Who won each point 1 or 2, or 3 to end.
     
     Outputs:
-    Scoreboard on screen points | games | sets of each player, after every point.
-    Tennis expressions Love, Deuce, Advantage, Game point.
-    Winner shown when someone wins the sets needed.
+    Scoreboard on screen points | games | sets
+    of each player, after every point. Tennis 
+    expressions like Love, Deuce, Advantage, Game point.
+    Winner shown when someone gets the sets needed.
     
     Process:
     1. Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
