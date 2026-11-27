@@ -434,6 +434,21 @@ def abbreviations(name):
 
 
 def main():
+    """
+    Inputs:
+    Names of the players or teams typed at the start.
+    Menu option from 1 to 5, typed every time the menu appears.
+    Outputs:
+    "ALA vs MAN" the match-up with the abbreviations at the start.
+    Each game and its winner shown by the sports function.
+    Process:
+    1. Asks for the names and makes the abbreviations.
+    2. Shows the menu again and again until the user picks 4
+       thats where it all finishes.
+    3. 1, 2 or 3 start basketball, tennis or soccer and print the winner
+       at the final of the program.
+    4. 5 opens read or clear; any other number shows "Invalid, try again".
+    """
     # Ask for the players and show the menu until the user ends it.
     name = names()
     short_abbreviation = abbreviations(name)
