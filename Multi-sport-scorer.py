@@ -35,7 +35,7 @@ def read_or_clear():
     Outputs:
     Results on screen: each saved line as "name: result".
     Empty file: results.txt erased and the message "File cleared".
-    Warning: the rpogram prints "The file doesn't exist yet" if there is no 
+    Warning: the rpogram prints "The file doesn't exist yet" if there is no
     file to read.
     Process:
     1. Shows the two options and asks for one.
