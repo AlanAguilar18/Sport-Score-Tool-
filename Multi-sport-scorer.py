@@ -14,7 +14,7 @@ import pyfiglet
 init(autoreset=True)
 
 def save(name, sum):
-    # Save the result (W or L) of each player in the results 
+    # Save the result (W or L) of each player in the results file.
     try:
         with open("results.txt", "a") as results:
             results.write(f"{name[0]}={sum[0]}\n")
@@ -87,12 +87,10 @@ def basketball(name, short_abbreviation):
     Who scored 1 or 2, or 3 to end and 4 for the next quarter.
     Kind of shot between paint, three-pointer or foul.
     Free throws in or out, for each of the two shots of a foul.
-    
     Outputs:
     Scoreboard on screen points of each team per quarter from 
     Q1 to Q4, after every play. Final totals and winner shown 
     when the game ends.
-    
     Process:
     1. Starts a scoreboard with 4 quarters at 0 for each team.
     2. Asks who scored and what kind of shot it was, and adds 2, 
@@ -164,12 +162,10 @@ def soccer(name, short_abbreviation):
     Names and abbreviations of both teams.
     Who scored 1 or 2, or 3 to end and 4 
     for half time.
-    
     Outputs:
     Scoreboard on screen goals of each team 
     in the first and second half, after every goal.
     Final totals and winner shown when the game ends.
-    
     Process:
     1. Starts a scoreboard with 2 halfves at 0 for each team.
     2. Every goal adds 1 to that team in the current half.
@@ -225,13 +221,11 @@ def tennis(name, short_abbreviation):
     Names and abbreviations of both players.
     Length of the match 3 or 5 sets.
     Who won each point 1 or 2, or 3 to end.
-    
     Outputs:
     Scoreboard on screen points | games | sets
     of each player, after every point. Tennis 
     expressions like Love, Deuce, Advantage, Game point.
     Winner shown when someone gets the sets needed.
-    
     Process:
     1. Asks for 3 or 5 sets and works out how many are needed to win (2 or 3).
     2. Every point goes 0 → 15 → 30 → 40 → game.
