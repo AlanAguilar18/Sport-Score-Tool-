@@ -339,7 +339,7 @@ def tennis(name, short_abbreviation):
                 else:
                     column = 0
                 return win([score[0][column], score[1][column]], name)
-            case 4:
+            case _:
                 print("Invalid, try again")
         show_matrix(score, short_abbreviation)
         print()
