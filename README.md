@@ -27,11 +27,11 @@ This project solves that problem by having you pick a sport first and then loadi
 
 ## External-Libraries
 The program uses two external libraries:   
-Colorama: which adds colors to the text in the terminal.
-Pyfiglet: which turns text into big letters. 
-To install them, open a new cmd or terminal and run:
+Colorama: which adds colors to the text in the terminal.   
+Pyfiglet: which turns text into big letters.   
+To install them, open a new cmd or terminal and run:   
 
-python -m pip install colorama
-python -m pip install pyfiglet
+python -m pip install colorama   
+python -m pip install pyfiglet   
 
 If you have an error that the library is not found then check that VS Code is using the same Python interpreter where you installed it so use Ctrl + Shift + P then select "Python: Select Interpreter". After installing, you can also reload VS Code with Ctrl + Shift + P then search for "Developer: Reload Window".
